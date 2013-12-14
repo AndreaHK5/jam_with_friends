@@ -32,6 +32,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'devise', '3.1.1'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
