@@ -23,13 +23,12 @@ class InstrumentsController < ApplicationController
   end
 
   def edit
-    @instrument = Instrument.new
+    @instrument = Instrument.find params[:id] 
   end
   
   def update 
     @instrument = Instrument.find params[:id]    
-    @instrument = Instrument.update safe_instrument
-    redirect_to @instrument
+    @instrument.update safe_instrument
     if @instrument.save
       flash[:notice] = "instrument edited!!!"
       redirect_to @instrument
