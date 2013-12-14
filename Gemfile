@@ -34,6 +34,8 @@ end
 
 gem 'devise', '3.1.1'
 
+gem 'geocoder'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

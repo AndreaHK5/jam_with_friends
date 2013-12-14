@@ -1,0 +1,12 @@
+<h2>your current preferences </h2>
+<h3> Instruments </h3>
+<% current_user.instruments.each do |instrument| %>
+  <p><%= instrument.name %></p>
+<% end %>
+
+<h3> Generes </h3>
+<% current_user.generes.each do |generes| %>
+  <p><%= generes.name %></p>
+<% end %>
+
+<%= link_to "edit profile", edit_user_path %>

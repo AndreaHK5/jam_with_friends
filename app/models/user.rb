@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :instruments, through: :iuassociations
   has_many :guassociations
   has_many :generes, through: :guassociations
+  has_one :location
+  accepts_nested_attributes_for :instruments, :generes
 end
