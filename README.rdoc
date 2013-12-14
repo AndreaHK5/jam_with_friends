@@ -9,7 +9,8 @@ application up and running.
 - set up resources instrument (name) DONE,
 - set up the associations for genere (Igassoiation)and instruments (Guassociation) DONE
 - set up the pages to create, edit and delete the genere and instruments DONE
-- Associate , genere, instrument to user and allow edit.
+- Associate , genere, instrument to user and allow edit. DONE
+- 
 - instruduce model for location (address, catchment, lat, long)
 - geolocation
 - associate location, to user

@@ -35,6 +35,14 @@ class UsersController < ApplicationController
          current_user.generes << Genere.where(id: genere_id)
         end
       end
+
+      if params["user"]["location"].empty?
+        currentl_user.location.address = ""
+      else
+        current_user.location.address = params["user"]["location"]
+        current_user.location.save
+      end
+
     end
     redirect_to current_user
   end
