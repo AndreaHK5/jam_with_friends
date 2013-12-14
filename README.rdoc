@@ -12,7 +12,9 @@ application up and running.
 - set up the pages to create, edit and delete the genere and instruments
 - geolocation
 - associate location, genere, instrument to user
+- validations
 - seed file for this so far
+- add to the show pages all the cross references (who plays an instrument, ho is keen on one genere and whatnot - see the museum app)
 - google maps API
 - look at the association with songs
 

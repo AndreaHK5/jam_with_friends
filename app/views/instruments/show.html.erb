@@ -1,0 +1,4 @@
+<h1><%= @instrument.name %></h1>
+<p><%= link_to "delete this instrument", instrument_path, confirm: "are you sure",  method: :delete %></p>
+<%= link_to "Back to all instruments", instruments_path %>
+<%= link_to "Back home", root_path %>
