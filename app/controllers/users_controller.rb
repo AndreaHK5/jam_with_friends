@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
- before_filter :authenticate_user!
-  def show
+ before_filter :authenticate_user!, :except => [:new, :create, :destroy, :show]
+  def show_profile
     @user = current_user
+    render 'show_profile'
   end
 
   def edit

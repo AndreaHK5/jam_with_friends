@@ -1,0 +1,20 @@
+
+<h2>your current preferences </h2>
+<h3> Instruments </h3>
+<% current_user.instruments.each do |instrument| %>
+  <p><%= instrument.name %></p>
+<% end %>
+
+<h3> Generes </h3>
+<% current_user.generes.each do |generes| %>
+  <p><%= generes.name %></p>
+<% end %>
+
+<h3> Location </h3>
+<p>Address <%= current_user.location.address %></p>
+<p>Latitude <%= current_user.location.latitude %></p>
+<p>Longitude <%= current_user.location.longitude %></p>
+<p>Radius <%= current_user.location.radius %>   (miles)</p>
+
+
+<%= link_to "edit profile", edit_user_path @user %>
