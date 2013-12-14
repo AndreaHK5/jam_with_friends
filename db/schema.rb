@@ -11,7 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214145216) do
+ActiveRecord::Schema.define(version: 20131214145815) do
+
+  create_table "generes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guassociations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "genere_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guassociations", ["genere_id"], name: "index_guassociations_on_genere_id"
+  add_index "guassociations", ["user_id"], name: "index_guassociations_on_user_id"
+
+  create_table "instruments", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iuassociations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "instrument_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iuassociations", ["instrument_id"], name: "index_iuassociations_on_instrument_id"
+  add_index "iuassociations", ["user_id"], name: "index_iuassociations_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

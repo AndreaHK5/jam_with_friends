@@ -4,9 +4,11 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 
-- devise for users
-- set up resources for genere, instrument,
-- set up the dependencies for genere and instruments
+- devise for users DONE
+
+- set up resources for genere (name), 
+- set up resources instrument (name),
+- set up the associations for genere (Igassoiation)and instruments (Guassociation)
 - set up the pages to create, edit and delete the genere and instruments
 - geolocation
 - associate location, genere, instrument to user
