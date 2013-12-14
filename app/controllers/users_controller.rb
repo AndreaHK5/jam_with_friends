@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
- before_filter :authenticate_user!, :except => [:new, :create, :destroy, :show]
+ before_filter :authenticate_user!, :except => [:new, :create, :destroy, :show_profile]
   def show_profile
     @user = current_user
-    render 'show_profile'
+  end
+
+  def show_map
+    if user_signed_in?
+      @user = current_user
+      @location = @user.location
+      render show_map
+    else
+      render show_profile
   end
 
   def edit

@@ -1,12 +1,6 @@
-<h1>Jam_With_Friends</h1>
-<h2>Your place to find cool people to jam with</h2>
-<h3>Some cool people nearby </h3>
-<ul>
-<% @location.nearbys(10).each do |location| %>
-<li> <%= location.user.email %> <%= location.address %> <%= location.user.instruments.collect {|i| i.name}%> <%= location.user.generes.collect {|i| i.name}%></li>
-<% end %>
-</ul>
-
+<p>
+<%= link_to "find people map?", show_map_path %>
+</p>
 
 <p>
 <%= link_to "Browse instruments", instruments_path %>
@@ -14,3 +8,7 @@
 <p>
 <%= link_to "Browse generes", generes_path %>
 </p>
+
+
+<h1>Jam_With_Friends</h1>
+<h2>Your place to find cool people to jam with</h2>
