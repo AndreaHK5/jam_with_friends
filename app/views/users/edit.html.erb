@@ -11,11 +11,13 @@
       <%= check_box_tag "user[genere_id][]", genere.id, @current_user.genere_ids.include?(genere.id), id: dom_id(genere) %>
       <%=label_tag dom_id(genere),  genere.name %> <br> 
     <% end %>
-<h2> generes </h2>
+<h2> location </h2>
     <%= f.label :location %>
     <%= f.text_field :location, value: "#{@current_user.location.address}" %>
     <br>
-
+    <%= f.label :radius %>
+    <%= f.text_field :radius, value: "#{@current_user.location.radius}" %>
+    <br>
     <%= f.submit %>
   <% end %>
   

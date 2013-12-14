@@ -40,6 +40,7 @@ class UsersController < ApplicationController
         currentl_user.location.address = ""
       else
         current_user.location.address = params["user"]["location"]
+        current_user.location.radius = params["user"]["radius"]
         current_user.location.save
       end
 

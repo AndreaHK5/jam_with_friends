@@ -10,7 +10,9 @@
 <% end %>
 
 <h3> Location </h3>
-<%= current_user.location.address %>
-
+<p>Address <%= current_user.location.address %></p>
+<p>Latitude <%= current_user.location.latitude %></p>
+<p>Longitude <%= current_user.location.longitude %></p>
+<p>Radius <%= current_user.location.radius %>   (miles)</p>
 
 <%= link_to "edit profile", edit_user_path %>

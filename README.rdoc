@@ -10,12 +10,12 @@ application up and running.
 - set up the associations for genere (Igassoiation)and instruments (Guassociation) DONE
 - set up the pages to create, edit and delete the genere and instruments DONE
 - Associate , genere, instrument to user and allow edit. DONE
-- 
-- instruduce model for location (address, catchment, lat, long)
-- geolocation
-- associate location, to user
+- instruduce model for location (address, lat, long) DONE
+- associate location, to user DONE
+- seed file for this so far DONE
+- geolocation to find people nearby
 - validations
-- seed file for this so far
+- index page with all the results as a line text
 - add to the show pages all the cross references (who plays an instrument, ho is keen on one genere and whatnot - see the museum app)
 - google maps API
 - look at the association with songs

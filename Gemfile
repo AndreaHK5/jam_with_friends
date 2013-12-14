@@ -34,7 +34,7 @@ end
 
 gem 'devise', '3.1.1'
 
-gem 'geocoder'
+gem 'geocoder', '1.1.9'
 
 group :development do
   gem 'better_errors'
