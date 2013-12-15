@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
- before_filter :authenticate_user!, :except => [:new, :create, :destroy, :show_profile]
-  def show_profile
+ # before_filter :authenticate_user!, :except => [:new, :create, :destroy, :show_profile]
+ 
+ def show
     @user = current_user
   end
 
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
       render show_map
     else
       render show_profile
+    end
   end
 
   def edit
@@ -52,8 +54,8 @@ class UsersController < ApplicationController
         current_user.location.radius = params["user"]["radius"]
         current_user.location.save
       end
-
     end
     redirect_to current_user
   end
+
 end

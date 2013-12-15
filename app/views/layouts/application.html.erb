@@ -11,8 +11,7 @@
     Welcome <%= current_user.email %>
     <%= link_to "log out", destroy_user_session_path, method: :delete %>
     <%= link_to "edit profile", edit_user_registration_path %>
-    <% @user = current_user %>
-    <%= link_to "see/edit your profile", show_profile_path %>
+    <%= link_to "see/edit your profile", current_user %>
   <% else %>
     <%= link_to "sign in", new_user_session_path %>
     <%= link_to "sign up", new_user_registration_path %>
