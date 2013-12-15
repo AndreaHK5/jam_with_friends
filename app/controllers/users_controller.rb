@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  # before_filter :authenticate_user!, :except => [:new, :create, :destroy, :show_profile]
  
- def show
+ def show_profile
     @user = current_user
   end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
+  def edit_profile
     @instruments = Instrument.all
     @generes = Genere.all
     @user = current_user
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
         current_user.location.save
       end
     end
-    redirect_to current_user
+    redirect_to show_profile_path
   end
 
 end
