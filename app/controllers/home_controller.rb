@@ -4,6 +4,7 @@ class HomeController < ApplicationController
       @location = current_user.location
     else
       @location = Location.first
+      @radius_search = 20      
     end
   end
 end

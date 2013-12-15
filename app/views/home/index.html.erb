@@ -10,5 +10,8 @@
 <h1>Jam_With_Friends</h1>
 <h2>Your place to find cool people to jam with</h2>
 <p>Here's a list </p>
+<ul><% @location.nearbys(@radius_search.to_i).each do |location| %>
+<li><%= location.user.name %> <%= location.address %> <%= location.user.generes.collect {|g| g.name} %> <%= location.user.instruments.collect {|g| g.name} %></li>
+<% end %></ul>
 
 
