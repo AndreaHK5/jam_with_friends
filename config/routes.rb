@@ -1,4 +1,5 @@
 JamWithFriends::Application.routes.draw do
+  get "search/index", to: 'search#index', as: "search"
   resources :users, only: [:edit, :update]
   get "users/show_profile", to: 'users#show_profile', as: "show_profile"
   get "users/edit_profile", to: 'users#edit_profile', as: "edit_profile"      
