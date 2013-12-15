@@ -42,6 +42,15 @@ group :development do
   gem 'meta_request'
 end
 
+
+group :development, :test do
+  gem 'quiet_assets'
+  gem 'rspec-rails'
+  gem 'debugger'
+  gem 'pry-rails'
+end
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

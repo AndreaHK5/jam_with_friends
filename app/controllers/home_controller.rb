@@ -3,8 +3,11 @@ class HomeController < ApplicationController
     if user_signed_in?
       @location = current_user.location
     else
-      @location = Location.first.nearbys(20)
+      @location = Location.first
     end
-    @users = @location.collect {|d| d.user}
+    @locations = @location.nearbys(20)
+    @instruments = Instrument.all
+    @generes = Genere.all
+    @users = @locations.collect {|d| d.user}
   end
 end

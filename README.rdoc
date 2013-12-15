@@ -17,9 +17,11 @@ application up and running.
 - validations
 - index page with all the results as a line text - for users not signed in DONE
 - search controller
+- improve search controller
 - add to the show pages all the cross references (who plays an instrument, ho is keen on one genere and whatnot - see the museum app)
 - google maps API for looks
 - look at the association with songs
+- add "all resoults" to search index
 
 
 
