@@ -4,13 +4,14 @@ class SearchController < ApplicationController
       redrect_to root_path
     else
       instruments_sought
-      geners_sought
+      generes_sought
       location_sought 
       radius_sought
 
       @users_in_area = []
       # location filer collects all users in the area
-      @location_search.nearbys(@radius_search).each do |location|
+      @locations = Location.near(@location_search,@radius_search)
+      @locations.each do |location|
         @users_in_area << location.user
       end
 
@@ -18,23 +19,32 @@ class SearchController < ApplicationController
       
       #collect users for an instrument 
       @users_in_area.each do |user|
-        @instruments_searched do |instrument|
+        @instruments_searched.each do |instrument|
           if user.instruments.include?(instrument)
-            @user << user
+            @users << user
           end
         end
       end
       
       #collect users for a genere 
       @users_in_area.each do |user|
-        @generes_searched do |genere|
+        @generes_searched.each do |genere|
           if user.generes.include?(genere)
-            @user << user
+            @users << user
           end
         end
       end
       # cleanup users for duplicates
-      @user = @user.uniq
+      @users = @users.uniq
+
+      #the index requires a location to populate the fields (for the time being)
+
+    if user_signed_in?
+      @location = current_user.location
+    else
+      @location = Location.first
+    end
+
 
       render 'home/index' 
     end
@@ -43,7 +53,7 @@ class SearchController < ApplicationController
   private
 
   def instruments_sought
-    if params["search"]["instrument_id"].include?("all") || params["search"]["generes_id"] == nil
+    if params["search"]["instrument_id"].include?("all") || params["search"]["genere_id"] == nil
       @instruments_searched = Instrument.all
     else
       @ids = params["search"]["instrument_id"]
@@ -55,7 +65,7 @@ class SearchController < ApplicationController
   end
 
   def generes_sought
-    if params["search"]["generes_id"].include?("all") || params["search"]["generes_id"] == nil
+    if params["search"]["genere_id"].include?("all") || params["search"]["genere_id"] == nil
       @generes_searched = Genere.all
     else
       @ids = params["search"]["genere_id"]
@@ -69,12 +79,12 @@ class SearchController < ApplicationController
   def location_sought
     if params["search"]["location"]["address"] == nil
       if user_signed_in?
-        @location_search = current_user.location
+        @location_search = current_user.location.address.to_s
       else
-        @location_search = Location.first
+        @location_search = Location.first.address.to_s
       end
     else
-      @location_search = params["search"]["location"]["address"]
+      @location_search = params["search"]["location"]["address"].first.to_s
     end
   end
 
@@ -82,10 +92,7 @@ class SearchController < ApplicationController
     if params["search"]["location"]["radius"] == nil
       @radius_search = "20"
     else
-      @radius_search = params["search"]["location"]["radius"]
+      @radius_search = params["search"]["location"]["radius"].first.to_i
     end
   end
-
-
-
 end

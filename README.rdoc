@@ -14,10 +14,11 @@ application up and running.
 - associate location, to user DONE
 - seed file for this so far DONE
 - geolocation to find people nearby DONE
-- validations
 - index page with all the results as a line text - for users not signed in DONE
 - search controller - basic DONE
-- improve search controller
+- validations
+- security for params
+- improve search controller (it needs to be an AND search, not an OR search)
 - add to the show pages all the cross references (who plays an instrument, ho is keen on one genere and whatnot - see the museum app)
 - google maps API for looks
 - look at the association with songs
