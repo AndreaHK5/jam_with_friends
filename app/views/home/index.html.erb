@@ -12,7 +12,7 @@
 <p>Here's a list </p>
 
 <ul><% @users.each do |user| %>
-<li><%= user.name %> <%= user.location.address %> <%= user.generes.collect {|g| g.name} %> <%= user.instruments.collect {|g| g.name} %></li>
+<li><%= link_to user.name, "users/show_other_profile/#{user.id}" %> <%= user.location.address %> <%= user.generes.collect {|g| g.name} %> <%= user.instruments.collect {|g| g.name} %></li>
 <% end %></ul>
 <br>
 

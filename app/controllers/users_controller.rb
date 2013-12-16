@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def show_other_profile
+    @user = User.where(id: params["id"]).first
+  end
+
   def show_map
     if user_signed_in?
       @user = current_user

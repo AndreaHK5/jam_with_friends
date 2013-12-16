@@ -9,8 +9,8 @@ class SearchController < ApplicationController
       radius_sought
 
       @users_in_area = []
-      # location filer collects all users in the area
-      @locations = Location.near(@location_search,@radius_search)
+      # collects all users in the area
+      @locations = Location.near(@location_search, @radius_search)
       @locations.each do |location|
         @users_in_area << location.user
       end
