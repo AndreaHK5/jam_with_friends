@@ -16,7 +16,7 @@ application up and running.
 - geolocation to find people nearby DONE
 - index page with all the results as a line text - for users not signed in DONE
 - search controller - basic DONE
-- add show page for user from root page DONE 
+- add show page for user from root page DONE
 - add google maps
 - validations
 - fix the routing as it is shit right now. it needs to onteract with devise

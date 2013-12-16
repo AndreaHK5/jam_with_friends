@@ -3,4 +3,7 @@
   <data-source source="LOCAL" name="Rails jam_with_friends: development" uuid="adb167df-b5e8-4516-bc53-5a8650df006f">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="MySQL - @localhost" uuid="6b5f2e72-fd2b-401d-8fbd-93626a3b5e3b">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>

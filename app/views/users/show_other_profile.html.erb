@@ -2,4 +2,5 @@
 <p>Instruments <%= @user.instruments.collect {|i| i.name} %></p>
 <p>Generes <%= @user.generes.collect {|g| g.name} %></p>
 <p>email <%= @user.email %></p>
+<p>name: <%= @user.name %></p>
 <%= link_to "home", root_path %>
