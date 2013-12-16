@@ -1,7 +1,11 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in?
-      @location = current_user.location
+      if current_user.location == nil
+        @location = Location.first        
+      else
+        @location = current_user.location
+      end
     else
       @location = Location.first
     end

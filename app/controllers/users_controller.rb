@@ -9,20 +9,20 @@ class UsersController < ApplicationController
     @user = User.where(id: params["id"]).first
   end
 
-  def show_map
-    if user_signed_in?
-      @user = current_user
-      @location = @user.location
-      render show_map
-    else
-      render show_profile
-    end
+  def new_profile
+    @instruments = Instrument.all
+    @generes = Genere.all
+    @user = current_user
+    @user.location = Location.new
   end
 
   def edit_profile
     @instruments = Instrument.all
     @generes = Genere.all
     @user = current_user
+    if @user.location == nil
+      @user.location = Location.first
+    end
   end
 
   def update

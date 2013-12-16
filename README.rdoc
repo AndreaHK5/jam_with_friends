@@ -17,10 +17,10 @@ application up and running.
 - index page with all the results as a line text - for users not signed in DONE
 - search controller - basic DONE
 - add show page for user from root page DONE 
+- add google maps
 - validations
 - fix the routing as it is shit right now. it needs to onteract with devise
 - add username for user at registration
-- add google maps
 - security for params
 - improve search controller (it needs to be an AND search, not an OR search)
 - add to the show pages all the cross references (who plays an instrument, ho is keen on one genere and whatnot - see the museum app)

@@ -1,20 +1,32 @@
 <h2>your current preferences </h2>
 <h3> Instruments </h3>
 
-<% current_user.instruments.each do |instrument| %>
-  <p><%= instrument.name %></p>
+<% if current_user.instruments != nil %>
+  <% current_user.instruments.each do |instrument| %>
+    <p><%= instrument.name %></p>
+  <% end %>
+<% else %>
+ <p>No insturments yet...</p>
 <% end %>
 
 <h3> Generes </h3>
-<% current_user.generes.each do |generes| %>
-  <p><%= generes.name %></p>
+<% if current_user.generes != nil %>
+  <% current_user.generes.each do |generes| %>
+    <p><%= generes.name %></p>
+  <% end %>
+<% else %>
+  <p>No generes yet....</p>
 <% end %>
 
 <h3> Location </h3>
-<p>Address: <%= current_user.location.address %></p>
-<p>Latitude: <%= current_user.location.latitude %></p>
-<p>Longitude: <%= current_user.location.longitude %></p>
-<p>Radius: <%= current_user.location.radius %>   (miles)</p>
+<% if current_user.location != nil %>
+  <p>Address: <%= current_user.location.address %></p>
+  <p>Latitude: <%= current_user.location.latitude %></p>
+  <p>Longitude: <%= current_user.location.longitude %></p>
+  <p>Radius: <%= current_user.location.radius %>   (miles)</p>
+<% else %>
+<p>no location yet...</p>
+<% end %>
 
 <%= link_to "edit profile", edit_profile_path  %>
 <%= link_to "back home", root_path %>
