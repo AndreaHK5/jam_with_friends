@@ -16,23 +16,29 @@
 <% end %></ul>
 <br>
 
-
+<h2>Do a search? </h2>
 <%= form_tag search_path, method: :get do %>
 <h3> Instruments </h3>
-  <%= check_box_tag "search[instrument_id][]", "all" %>
-  <%=label_tag "All Instruments" %> <br>
+  <%= check_box_tag "search[instrument_id][]", "all", :checked %>
+  <%= label_tag "All Instruments" %> <br>
   <% Instrument.all.each do |instrument| %>
   <%= check_box_tag "search[instrument_id][]", instrument.id %>
-  <%=label_tag dom_id(instrument), instrument.name %> <br>
- <% end %>
+  <%= label_tag dom_id(instrument), instrument.name %> <br>
+  <% end %>
 <h3> Generes </h3>
-  <%= check_box_tag "search[genere_id][]", "all" %>
-  <%=label_tag "All generes" %> <br>
+  <%= check_box_tag "search[genere_id][]", "all", :checked %>
+  <%= label_tag "All generes" %> <br>
   <% Genere.all.each do |genere| %>
   <%= check_box_tag "search[genere_id][]", genere.id %>
-  <%=label_tag dom_id(genere),  genere.name %> <br> 
- <% end %>
-
+  <%= label_tag dom_id(genere),  genere.name %> <br> 
+   <% end %>
+<h3> Geometrical </h3>
+    <%= label_tag "Address" %>
+    <%= text_field_tag "search[location][address][]", "#{@location.address}"%>
+    <br>
+    <%= label_tag "Radius" %>
+    <%= text_field_tag "search[location][radius][]", "20" %>
+    <br>
 <%= submit_tag 'Search'%>
 <% end %>
 <br>

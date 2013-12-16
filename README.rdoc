@@ -16,12 +16,13 @@ application up and running.
 - geolocation to find people nearby DONE
 - validations
 - index page with all the results as a line text - for users not signed in DONE
-- search controller
+- search controller - basic DONE
 - improve search controller
 - add to the show pages all the cross references (who plays an instrument, ho is keen on one genere and whatnot - see the museum app)
 - google maps API for looks
 - look at the association with songs
 - add "all resoults" to search index
+- read location from IP and set that in case the location is not identified in the search (now it is Location.first => LAME!s)
 
 
 
