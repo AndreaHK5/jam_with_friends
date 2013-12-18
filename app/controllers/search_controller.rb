@@ -8,44 +8,36 @@ class SearchController < ApplicationController
       location_sought 
       radius_sought
 
-      @users_in_area = []
+      @users = []
+
+
       # collects all users in the area
       @locations = Location.near(@location_search, @radius_search)
-      @locations.each do |location|
-        @users_in_area << location.user
+
+
+      @locations.each do |l|
+        @instruments_searched.each do |i|
+          @generes_searched.each do |g|
+            @users << User.search_by_genere(g.id).search_by_instrument(i.id).search_by_location(l.id).first
+          end
+        end
       end
 
-      @users = []
-      
-      #collect users for an instrument 
-      @users_in_area.each do |user|
-        @instruments_searched.each do |instrument|
-          if user.instruments.include?(instrument)
-            @users << user
-          end
-        end
-      end
-      
-      #collect users for a genere 
-      @users_in_area.each do |user|
-        @generes_searched.each do |genere|
-          if user.generes.include?(genere)
-            @users << user
-          end
-        end
-      end
+      @users.compact!
+
       # cleanup users for duplicates
       @users = @users.uniq
+      @users.delete(current_user)
 
       #the index requires a location to populate the fields (for the time being)
 
-    if user_signed_in?
-      @location = current_user.location
-    else
-      @location = Location.first
-    end
+      if user_signed_in?
+        @location = current_user.location
+      else
+        @location = Location.first
+      end
 
-
+      
       render 'home/index' 
     end
   end

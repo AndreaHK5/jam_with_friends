@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  scope :search_by_genere, ->(genere) { joins(:generes).where('generes.id' => genere)}
+  scope :search_by_instrument, ->(instrument) { joins(:instruments).where('instruments.id' => instrument)}
+  scope :search_by_location, ->(location) { joins(:location).where('locations.id' => location)}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
