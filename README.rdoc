@@ -1,33 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-
-- devise for users DONE
-- set up resources for genere (name) DONE, 
-- set up resources instrument (name) DONE,
-- set up the associations for genere (Igassoiation)and instruments (Guassociation) DONE
-- set up the pages to create, edit and delete the genere and instruments DONE
-- Associate , genere, instrument to user and allow edit. DONE
-- instruduce model for location (address, lat, long) DONE
-- associate location, to user DONE
-- seed file for this so far DONE
-- geolocation to find people nearby DONE
-- index page with all the results as a line text - for users not signed in DONE
-- search controller - basic DONE
-- add show page for user from root page DONE
-- Improve search controller
-- add google maps
-- validations
-- security for params
-- improve search controller (it needs to be an AND search, not an OR search)
-- add to the show pages all the cross references (who plays an instrument, ho is keen on one genere and whatnot - see the museum app)
-- look at the association with songs
-- add "all resoults" to search index
-- read location from IP and set that in case the location is not identified in the search (now it is Location.first => LAME!s)
-
-
 VERSION 1 stories
 
 1.	As a GUEST I should be able to see on a map signed in users and the instruments they play on a map view	.2.	As a Guest I should be able to register in a single page my basic details (name, email, password). DONE3.	As a registered user I shoudl be able to then complete my registration with all my information. DONE4.	As a GUEST I shoudl be able to filter the results on the screen according to instruments, generes and distance. DONE5.	As a newly registered user I shoudl be able to go back o the search that I had and send a message to the musician that I have found6.	As a registered user I should be able to contact the musicians that I see on the map.7.	As a registered user I shoudl be able to do a line search for an instrument in a certain area in a certain area.8.	add the years experience to the user module.
