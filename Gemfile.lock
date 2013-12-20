@@ -61,6 +61,7 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     geocoder (1.1.9)
+    gmaps4rails (2.1.1)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -149,7 +150,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.0.0)
+    turbolinks (2.1.0)
       coffee-rails
     tzinfo (0.3.38)
     uglifier (2.3.3)
@@ -168,6 +169,7 @@ DEPENDENCIES
   debugger
   devise (= 3.1.1)
   geocoder (= 1.1.9)
+  gmaps4rails
   jbuilder (~> 1.2)
   jquery-rails
   meta_request
