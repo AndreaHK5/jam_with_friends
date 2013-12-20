@@ -10,6 +10,11 @@ class HomeController < ApplicationController
       @location = Location.first
     end
     @locations = @location.nearbys(20)
+    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+      marker.infowindow location.user.email
+    end
     @instruments = Instrument.all
     @generes = Genere.all
     @users = @locations.collect {|d| d.user}

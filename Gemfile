@@ -35,7 +35,6 @@ end
 gem 'devise', '3.1.1'
 
 gem 'geocoder', '1.1.9'
-
 gem 'gmaps4rails'
 
 group :development do

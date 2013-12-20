@@ -37,7 +37,11 @@ class SearchController < ApplicationController
         @location = Location.first
       end
 
-      
+          @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+            marker.lat user.location.latitude
+            marker.lng user.location.longitude
+            marker.infowindow user.email
+          end
       render 'home/index' 
     end
   end
