@@ -53,7 +53,9 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
 
 <ul><% @users.each do |user| %>
-<li><%= link_to user.name, "/users/show_other_profile/#{user.id}" %> <%= user.location.address %> <%= user.generes.collect {|g| g.name} %> <%= user.instruments.collect {|g| g.name} %></li>
+<li>
+  <%= link_to user.name, profile_path(user) %> <%= user.location.address %> <%= user.generes.collect {|g| g.name} %> <%= user.instruments.collect {|g| g.name} %>
+</li>
 <% end %></ul>
 <br>
 

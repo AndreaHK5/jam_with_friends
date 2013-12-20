@@ -1,11 +1,8 @@
 JamWithFriends::Application.routes.draw do
+  root "home#index"
   get "search/index", to: 'search#index', as: "search"
-  resources :users, only: [:edit, :update]
-  get "users/show_profile", to: 'users#show_profile', as: "show_profile"
-  get "users/edit_profile", to: 'users#edit_profile', as: "edit_profile"
-  get "users/show_other_profile/:id", to: 'users#show_other_profile', as:"show_other_profile"
   resources :instruments
   resources :generes
   devise_for :users
-  root "home#index"
+  resources :profile, only: [:show, :edit, :update]
 end
