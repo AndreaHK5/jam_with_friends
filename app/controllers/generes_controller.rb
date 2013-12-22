@@ -17,7 +17,11 @@ class GeneresController < ApplicationController
       flash[:notice] = "new Genere added!!!"
       redirect_to @genere
     else
-      flash[:notice] = "something went wrong"
+      flash[:notice] = "something went wrong with adding #{safe_genere[:name]}"
+      @genere.save
+      @genere.errors[:name].each do |d| 
+        flash[:notice] = flash[:notice] + ", \n #{d}"
+      end
       render 'new'
     end
   end

@@ -63,6 +63,9 @@ GEM
     geocoder (1.1.9)
     gmaps4rails (2.1.1)
     hike (1.2.3)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -82,6 +85,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
+    multi_xml (0.5.5)
     orm_adapter (0.5.0)
     polyglot (0.3.3)
     pry (0.9.12.4)
@@ -170,6 +174,7 @@ DEPENDENCIES
   devise (= 3.1.1)
   geocoder (= 1.1.9)
   gmaps4rails
+  httparty
   jbuilder (~> 1.2)
   jquery-rails
   meta_request

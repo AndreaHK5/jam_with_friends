@@ -42,7 +42,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
    <% end %>
 <h3> Geometrical </h3>
     <%= label_tag "Address" %>
-    <%= text_field_tag "search[location][address][]", "#{@location.address}"%>
+    <%= text_field_tag "search[location][address][]", "#{@location_search}"%>
     <br>
     <%= label_tag "Radius" %>
     <%= text_field_tag "search[location][radius][]", "20" %>

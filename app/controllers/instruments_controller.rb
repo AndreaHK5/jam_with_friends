@@ -17,7 +17,11 @@ class InstrumentsController < ApplicationController
       flash[:notice] = "new instrument added!!!"
       redirect_to @instrument
     else
-      flash[:notice] = "something went wrong"
+      flash[:notice] = "something went wrong with adding #{safe_instrument[:name]}"
+      @instrument.save
+      @instrument.errors[:name].each do |d| 
+        flash[:notice] = flash[:notice] + ", \n #{d}"
+      end
       render 'new'
     end
   end

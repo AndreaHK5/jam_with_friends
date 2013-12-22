@@ -42,7 +42,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
 end
-
+gem 'httparty', :require => 'httparty', :group => :development 
 
 group :development, :test do
   gem 'quiet_assets'

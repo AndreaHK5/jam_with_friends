@@ -2,21 +2,18 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       if current_user.location == nil
-        @location = Location.first        
+        @location_search = current_location
       else
-        @location = current_user.location
+        @location_search = current_user.location.address
       end
     else
-      @location = Location.first
+      @location_search = current_location
     end
-    @locations = @location.nearbys(20)
-    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.latitude
-      marker.lng location.longitude
-      marker.infowindow location.user.email
-    end
+    @locations = Location.near(@location_search)
+    @users = @locations.each.collect {|l| l.user}
+    @users.delete(current_user)
+    prepare_hash_for_map
     @instruments = Instrument.all
     @generes = Genere.all
-    @users = @locations.collect {|d| d.user}
   end
 end

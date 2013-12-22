@@ -7,14 +7,9 @@ class SearchController < ApplicationController
       generes_sought
       location_sought 
       radius_sought
-
       @users = []
-
-
       # collects all users in the area
       @locations = Location.near(@location_search, @radius_search)
-
-
       @locations.each do |l|
         @instruments_searched.each do |i|
           @generes_searched.each do |g|
@@ -30,18 +25,10 @@ class SearchController < ApplicationController
       @users.delete(current_user)
 
       #the index requires a location to populate the fields (for the time being)
+      @location_search
 
-      if user_signed_in?
-        @location = current_user.location
-      else
-        @location = Location.first
-      end
 
-          @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-            marker.lat user.location.latitude
-            marker.lng user.location.longitude
-            marker.infowindow user.email
-          end
+      prepare_hash_for_map
       render 'home/index' 
     end
   end
