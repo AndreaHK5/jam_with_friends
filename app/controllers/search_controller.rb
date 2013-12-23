@@ -8,8 +8,10 @@ class SearchController < ApplicationController
       location_sought 
       radius_sought
       @users = []
+
       # collects all users in the area
       @locations = Location.near(@location_search, @radius_search)
+      # why iterating when you already have the users throug
       @locations.each do |l|
         @instruments_searched.each do |i|
           @generes_searched.each do |g|

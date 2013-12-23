@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-  scope :search_by_genere, ->(genere) { joins(:generes).where('generes.id' => genere)}
-  scope :search_by_instrument, ->(instrument) { joins(:instruments).where('instruments.id' => instrument)}
-  scope :search_by_location, ->(location) { joins(:location).where('locations.id' => location)}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,4 +11,29 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :instruments, :generes
   validates :email, uniqueness: true
   validates :name, uniqueness: true
+
+# first version WORS!
+  # scope :search_by_genere, ->(genere) { joins(:generes).where('generes.id' => genere)}
+  # scope :search_by_instrument, ->(instrument) { joins(:instruments).where('instruments.id' => instrument)}
+  # scope :search_by_location, ->(location) { joins(:location).where('locations.id' => location)}
+
+#second version - WORS! - with string sanitization
+  # def self.search_by_genere(query)
+  #   joins(:generes).where('generes.id LIKE :query', :query  => "%#{query}%")
+  # end
+
+  # def self.search_by_instrument(query)
+  #   joins(:instruments).where('instruments.id LIKE :query', :query  => "%#{query}%")
+  # end
+
+  # def self.search_by_location(query)
+  #   joins(:location).where('locations.id LIKE :query', :query  => "%#{query}%")
+  # end
+
+# third version - all rolled together
+  # scope :search_by_genere, ->(genere) { joins(:generes).where('generes.id' => genere)}
+  scope :search_by_genere, ->(query) { joins(:generes).where('generes.id LIKE :query', :query => "%#{query}%")}
+  scope :search_by_instrument, ->(query) { joins(:instruments).where('instruments.id LIKE :query', :query => "%#{query}%")}
+  scope :search_by_location, ->(query) { joins(:location).where('locations.id LIKE :query', :query => "%#{query}%")}
+
 end
