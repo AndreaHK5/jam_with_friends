@@ -21,6 +21,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   markers = handler.addMarkers(<%=raw @hash.to_json %>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  handler.getMap().setZoom(14)
 });
  </script>
 
@@ -42,10 +43,10 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
    <% end %>
 <h3> Geometrical </h3>
     <%= label_tag "Address" %>
-    <%= text_field_tag "search[location][address][]", "#{@location_search}"%>
+    <%= text_field_tag "search[location][]", "#{@location_search}"%>
     <br>
     <%= label_tag "Radius" %>
-    <%= text_field_tag "search[location][radius][]", "20" %>
+    <%= text_field_tag "search[radius][]", "20" %>
     <br>
 <%= submit_tag 'Search'%>
 <% end %>

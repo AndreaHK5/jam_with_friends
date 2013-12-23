@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
+  before_filter :check_user,  :only => [:edit, :update]
 
   def new
     @instruments = Instrument.all
@@ -31,7 +32,7 @@ class ProfileController < ApplicationController
       @ids = @safe_params[:instrument_id]
       current_user.instruments = []
       @ids.each do |instrument_id|
-      current_user.instruments << Instrument.where(id: instrument_id)
+      current_user.instruments << Instrument.search_by_id(instrument_id)
       end
     end
 
@@ -42,7 +43,7 @@ class ProfileController < ApplicationController
       @ids = @safe_params[:genere_id]
       current_user.generes = []
       @ids.each do |genere_id|
-       current_user.generes << Genere.where(id: genere_id)
+       current_user.generes << Genere.search_by_id(genere_id)
       end
     end
 
@@ -66,7 +67,17 @@ class ProfileController < ApplicationController
     redirect_to profile_path(current_user)
   end
 
+  private
+
     def safe_params
      @safe_params = params.require(:user).permit(:location, :radius, :instrument_id => [], :genere_id =>[])
    end
+
+  def check_user
+    @user = User.find(params[:id])
+    if current_user != @user        
+      redirect_to root_url, :notice => "Cannot act on different user."
+    end
+  end
+  
 end

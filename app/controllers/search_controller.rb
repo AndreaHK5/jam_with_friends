@@ -3,6 +3,7 @@ class SearchController < ApplicationController
     if params["search"].empty?
       redrect_to root_path
     else
+      safe_params
       instruments_sought
       generes_sought
       location_sought 
@@ -19,6 +20,8 @@ class SearchController < ApplicationController
           end
         end
       end
+
+      #accumulating somethign to then toss it away is not how you were brought up
 
       @users.compact!
 
@@ -37,47 +40,51 @@ class SearchController < ApplicationController
 
   private
 
+  def safe_params
+   @safe_params = params.require(:search).permit(:location, :radius, :instrument_id => [], :genere_id =>[])
+  end
+
   def instruments_sought
-    if params["search"]["instrument_id"].include?("all") || params["search"]["genere_id"] == nil
+    if @safe_params["instrument_id"].include?("all") || @safe_params["instrument_id"] == nil
       @instruments_searched = Instrument.all
     else
-      @ids = params["search"]["instrument_id"]
+      @ids = @safe_params["instrument_id"]
       @instruments_searched = []
       @ids.each do |instrument_id|
-        @instruments_searched << Instrument.where(id: instrument_id).first
+        @instruments_searched << Instrument.search_by_id(instrument_id).first
       end
     end
   end
 
   def generes_sought
-    if params["search"]["genere_id"].include?("all") || params["search"]["genere_id"] == nil
+    if @safe_params["genere_id"].include?("all") || @safe_params["genere_id"] == nil
       @generes_searched = Genere.all
     else
-      @ids = params["search"]["genere_id"]
+      @ids = @safe_params["genere_id"]
       @generes_searched = []
       @ids.each do |genere_id|
-        @generes_searched << Genere.where(id: genere_id).first
+        @generes_searched << Genere.search_by_id(genere_id).first
       end
     end
   end
 
   def location_sought
-    if params["search"]["location"]["address"] == nil
+    if @safe_params["location"] == nil
       if user_signed_in?
         @location_search = current_user.location.address.to_s
       else
-        @location_search = Location.first.address.to_s
+        @location_search = current_location
       end
     else
-      @location_search = params["search"]["location"]["address"].first.to_s
+      @location_search = @safe_params["location"].first.to_s
     end
   end
 
   def radius_sought
-    if params["search"]["location"]["radius"] == nil
+    if @safe_params["radius"] == nil
       @radius_search = "20"
     else
-      @radius_search = params["search"]["location"]["radius"].first.to_i
+      @radius_search = @safe_params["radius"].first.to_i
     end
   end
 end
