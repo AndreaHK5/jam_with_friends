@@ -48,6 +48,10 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     <%= label_tag "Radius" %>
     <%= text_field_tag "search[radius][]", "20" %>
     <br>
+<h3> Find... </h3>
+    <%= label_tag "Find:" %>
+    <%= text_field_tag "search[find][]", "bass, guitar, rock, jazz"%>
+    <br>    
 <%= submit_tag 'Search'%>
 <% end %>
 <br>

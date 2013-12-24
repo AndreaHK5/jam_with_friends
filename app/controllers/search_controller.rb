@@ -6,8 +6,10 @@ class SearchController < ApplicationController
       safe_params
       instruments_sought
       generes_sought
+
       location_sought 
       radius_sought
+        
       @users = []
 
       # collects all users in the area
@@ -41,7 +43,7 @@ class SearchController < ApplicationController
   private
 
   def safe_params
-   @safe_params = params.require(:search).permit(:location, :radius, :instrument_id => [], :genere_id =>[])
+   @safe_params = params.require(:search).permit(:location, :radius, :find, :instrument_id => [], :genere_id =>[])
   end
 
   def instruments_sought
@@ -67,6 +69,20 @@ class SearchController < ApplicationController
       end
     end
   end
+
+  def update_with_free_search
+
+    if @safe_params[:find] != nil || @safe_params[:find] != ""bass, guitar, rock, jazz""
+      params[:find].split(' ').each do |find|
+
+      Instrument.search_by_name(find)
+      update_instruments
+      Genere.search_by_name(find)
+      update_generes
+      end
+    end 
+  end
+
 
   def location_sought
     if @safe_params["location"] == nil
