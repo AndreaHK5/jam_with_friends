@@ -72,13 +72,20 @@ class SearchController < ApplicationController
 
   def update_with_free_search
 
-    if @safe_params[:find] != nil || @safe_params[:find] != ""bass, guitar, rock, jazz""
+    if @safe_params[:find] != nil || @safe_params[:find] != "bass, guitar, rock, jazz"
       params[:find].split(' ').each do |find|
-
-      Instrument.search_by_name(find)
-      update_instruments
-      Genere.search_by_name(find)
-      update_generes
+      instrument = Instrument.search_by_name(find)
+      if !instrument.empty?
+      @instruments_searched << instrument
+      end
+      @instruments_searched.uniq
+      genere = Genere.search_by_name(find)
+      if !genere.empty?
+      @generes_searched << genere
+      end
+      @generes_searched.uniq
+      # would be cool to search as well if the search params has alreay inside the insuments and generes, in order to prevent calling uniq
+      # also, would be cool to skip the generes search in case the instrument search is positive (something is either an instrument or a genere)
       end
     end 
   end

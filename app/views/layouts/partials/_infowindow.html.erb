@@ -1,0 +1,8 @@
+<p>Name: <%= user.name %></p>
+<p>Instruments: <%= user.instruments.collect {|i| i.name} %></p>
+<p>Generes: <%= user.generes.collect {|g| g.name} %></p>
+<% if user_signed_in? %>
+<p>Email contact: <%= user.email %></p>
+<% else %>
+<p>Sing in to contact me!</p>
+<% end %>
