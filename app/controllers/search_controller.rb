@@ -6,19 +6,21 @@ class SearchController < ApplicationController
       safe_params
       instruments_sought
       generes_sought
-
       location_sought 
       radius_sought
+      # update_with_free_search
         
       @users = []
-
       # collects all users in the area
       @locations = Location.near(@location_search, @radius_search)
       # why iterating when you already have the users throug
-      @locations.each do |l|
-        @instruments_searched.each do |i|
-          @generes_searched.each do |g|
-            @users << User.search_by_genere(g.id).search_by_instrument(i.id).search_by_location(l.id).first
+      @instruments_searched.each do |i|
+        @generes_searched.each do |g|
+          @user_matching = User.search_by_genere(g.id).search_by_instrument(i.id)
+          @locations.each do |l|
+            if @user_matching.to_a.include?(l.user)
+              @users << l.user
+            end
           end
         end
       end
@@ -72,7 +74,7 @@ class SearchController < ApplicationController
 
   def update_with_free_search
 
-    if @safe_params[:find] != nil || @safe_params[:find] != "bass, guitar, rock, jazz"
+    if !@safe_params[:find].empty?
       params[:find].split(' ').each do |find|
       instrument = Instrument.search_by_name(find)
       if !instrument.empty?
@@ -99,7 +101,7 @@ class SearchController < ApplicationController
         @location_search = current_location
       end
     else
-      @location_search = @safe_params["location"].first.to_s
+      @location_search = @safe_params["location"]
     end
   end
 
@@ -107,7 +109,7 @@ class SearchController < ApplicationController
     if @safe_params["radius"] == nil
       @radius_search = "20"
     else
-      @radius_search = @safe_params["radius"].first.to_i
+      @radius_search = @safe_params["radius"]
     end
   end
 end
