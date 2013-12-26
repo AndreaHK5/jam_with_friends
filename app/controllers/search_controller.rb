@@ -4,11 +4,19 @@ class SearchController < ApplicationController
       redrect_to root_path
     else
       safe_params
+      @instruments_searched = []
+      @generes_searched = []
       instruments_sought
       generes_sought
       location_sought 
       radius_sought
       update_with_free_search
+      if @instruments_searched.empty?
+        @instruments_searched = Instrument.all
+      end
+      if @generes_searched.empty?
+        @generes_searched = Genere.all
+      end
       @users = []
       # collects all users in the area
       @locations = Location.near(@location_search, @radius_search)
@@ -23,6 +31,7 @@ class SearchController < ApplicationController
           end
         end
       end
+
 
       #accumulating somethign to then toss it away is not how you were brought up
 
@@ -48,25 +57,29 @@ class SearchController < ApplicationController
   end
 
   def instruments_sought
-    if @safe_params["instrument_id"].include?("all") || @safe_params["instrument_id"] == nil
-      @instruments_searched = Instrument.all
-    else
-      @ids = @safe_params["instrument_id"]
-      @instruments_searched = []
-      @ids.each do |instrument_id|
-        @instruments_searched << Instrument.search_by_id(instrument_id).first
+    unless @safe_params["instrument_id"] == nil
+      if @safe_params["instrument_id"].include?("all")
+        @instruments_searched = Instrument.all
+      else
+        @ids = @safe_params["instrument_id"]
+        @instruments_searched = []
+        @ids.each do |instrument_id|
+          @instruments_searched << Instrument.search_by_id(instrument_id).first
+        end
       end
     end
   end
 
   def generes_sought
-    if @safe_params["genere_id"].include?("all") || @safe_params["genere_id"] == nil
-      @generes_searched = Genere.all
-    else
-      @ids = @safe_params["genere_id"]
-      @generes_searched = []
-      @ids.each do |genere_id|
-        @generes_searched << Genere.search_by_id(genere_id).first
+    unless  @safe_params["genere_id"] == nil
+      if @safe_params["genere_id"].include?("all")
+        @generes_searched = Genere.all
+      else
+        @ids = @safe_params["genere_id"]
+        @generes_searched = []
+        @ids.each do |genere_id|
+          @generes_searched << Genere.search_by_id(genere_id).first
+        end
       end
     end
   end
