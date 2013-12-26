@@ -1,4 +1,4 @@
-<h2><%= @user.name %> </h2>
+<h2><%= @user.name %>, see your current preferences </h2>
 <h3> Instruments </h3>
 
 <% if current_user.instruments != nil %>
@@ -27,5 +27,7 @@
 <% else %>
 <p>no location yet...</p>
 <% end %>
-
+<% if current_user.eql?(@user) %>
+<%= link_to "edit profile", edit_profile_path(current_user)  %>
+<% end %>
 

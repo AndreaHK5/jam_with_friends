@@ -18,9 +18,7 @@ class SearchController < ApplicationController
         @generes_searched = Genere.all
       end
       @users = []
-      # collects all users in the area
       @locations = Location.near(@location_search, @radius_search)
-      # why iterating when you already have the users throug
       @instruments_searched.each do |i|
         @generes_searched.each do |g|
           @user_matching = User.search_by_genere(g.id).search_by_instrument(i.id)
@@ -32,18 +30,9 @@ class SearchController < ApplicationController
         end
       end
 
-
-      #accumulating somethign to then toss it away is not how you were brought up
-
       @users.compact!
-
-      # cleanup users for duplicates
       @users = @users.uniq
       @users.delete(current_user)
-
-      #the index requires a location to populate the fields (for the time being)
-      @location_search
-
 
       prepare_hash_for_map
       render 'home/index' 

@@ -11,6 +11,11 @@ class ProfileController < ApplicationController
   
   def show
     @user = User.find params[:id]
+    if @user == current_user
+      render 'show_own'
+    else
+      render 'show'
+    end
   end
 
 
