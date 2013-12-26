@@ -35,7 +35,7 @@ class GeneresController < ApplicationController
     @genere.update safe_genere
     if @genere.save
       flash[:notice] = "Genere edited!!!"
-      redirect_to @genere
+      redirect_to edit_profile_path(current_user)
     else
       flash[:notice] = "something went wrong"
       render 'edit'

@@ -15,7 +15,7 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.create safe_instrument
     if @instrument.save
       flash[:notice] = "new instrument added!!!"
-      redirect_to @instrument
+      redirect_to edit_profile_path(current_user)
     else
       flash[:notice] = "something went wrong with adding #{safe_instrument[:name]}"
       @instrument.save

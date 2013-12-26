@@ -10,8 +10,9 @@
   <% if user_signed_in? %>
     Welcome <%= current_user.email %>
     <%= link_to "log out", destroy_user_session_path, method: :delete %>
-    <%= link_to "edit profile", edit_user_registration_path %>
-    <%= link_to "see/edit your profile", profile_path(current_user) %>
+    <%= link_to "password reset", edit_user_registration_path %>
+    <%= link_to "edit your profile", profile_path(current_user) %>
+    <%= link_to "home", root_path %>
   <% else %>
     <%= link_to "sign in", new_user_session_path %>
     <%= link_to "sign up", new_user_registration_path %>

@@ -8,8 +8,7 @@ class SearchController < ApplicationController
       generes_sought
       location_sought 
       radius_sought
-      # update_with_free_search
-        
+      update_with_free_search
       @users = []
       # collects all users in the area
       @locations = Location.near(@location_search, @radius_search)
@@ -75,15 +74,15 @@ class SearchController < ApplicationController
   def update_with_free_search
 
     if !@safe_params[:find].empty?
-      params[:find].split(' ').each do |find|
+      @safe_params[:find].split(' ').each do |find|
       instrument = Instrument.search_by_name(find)
       if !instrument.empty?
-      @instruments_searched << instrument
+      @instruments_searched << instrument.first
       end
       @instruments_searched.uniq
       genere = Genere.search_by_name(find)
       if !genere.empty?
-      @generes_searched << genere
+      @generes_searched << genere.first
       end
       @generes_searched.uniq
       # would be cool to search as well if the search params has alreay inside the insuments and generes, in order to prevent calling uniq
