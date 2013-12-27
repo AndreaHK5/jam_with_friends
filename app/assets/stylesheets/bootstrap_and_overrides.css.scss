@@ -1,3 +1,26 @@
-$navbar-default-height: 10em;
-
+$navbar-margin-bottom: 0;
+$navbar-height: 6px;
 @import 'bootstrap';
+
+
+.navtop {
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+}
+
+/*.nav {
+  li{
+    a{
+  padding: 0 0 0 0;      
+    }
+  }
+}*/
+
+.navbar-nav {
+  li{
+    a{
+  padding: 0 1.5em 0 1.5em;      
+    }
+  }
+}

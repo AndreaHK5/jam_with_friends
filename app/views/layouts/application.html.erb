@@ -11,9 +11,9 @@
 <div class="container">
   <% if user_signed_in? %>
    <nav class="navbar navbar-default" role="navigation">
-      <ul class="nav nav-pills navbar-right">  
+      <ul class="nav navbar-nav navbar-right">  
         <li>
-        <%= link_to "#{current_user.name}(edit profile)", profile_path(current_user) %>
+        <%= link_to "#{current_user.name}", profile_path(current_user)%>
         </li>
         <li>
           <%= link_to "log out", destroy_user_session_path, method: :delete %>
@@ -22,18 +22,26 @@
    </nav> 
   <% else %>
    <nav class="navbar navbar-default" role="navigation">
-      <ul class="nav nav-pills navbar-right">  
+      <ul class="nav-pills navbar-right">  
         <li>
-          <%= link_to "sign in", new_user_session_path %>
+          <%= link_to content_tag(:span,  "sign in", class: "navtop"), new_user_session_path %>
         </li>
         <li>
-          <%= link_to "sign up", new_user_registration_path %>
+          <%= link_to content_tag(:span, "sign up", class: "navtop"), new_user_registration_path %>
         </li>        
       </ul>
    </nav> 
   <% end %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
+
+
 <div class="row">
   <div class="jumbotron">
     <div class="col-md-3">

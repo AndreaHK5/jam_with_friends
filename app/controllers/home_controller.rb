@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     else
       @location_search = current_location
     end
-    @locations = Location.near(@location_search)
+    @locations = Location.near(@location_search,1)
     @users = @locations.each.collect {|l| l.user}
     @users.delete(current_user)
     prepare_hash_for_map
