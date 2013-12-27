@@ -9,29 +9,50 @@
 </head>
 <body>
 <div class="container">
-  <% if user_signed_in? %>
-   <nav class="navbar navbar-default" role="navigation">
-      <ul class="nav navbar-nav navbar-right">  
-        <li>
-        <%= link_to "#{current_user.name}", profile_path(current_user)%>
-        </li>
-        <li>
-          <%= link_to "log out", destroy_user_session_path, method: :delete %>
-        </li>        
-      </ul>
-   </nav> 
+<nav class="navbar navbar-default" role="navigation">
+  
+  <div class="navbar-header">
+    <button class="navbar-btn">
+      <%= link_to image_tag("JamWithFriends.png", class: "logo"), root_path %>
+    </button>
+  </div>
+  <form class="navbar-form" role="search">
+      <%= form_tag search_path, method: :get do %> 
+        <div class="form-group">
+          <%= text_field_tag "search[find]"%>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag "search[location]", "#{@location_search}"%>
+        </div>
+        <button class="btn btn-default">
+          <%= submit_tag 'Find'%>
+        </button>
+      <% end %>
+  </form>
+  
+ <% if user_signed_in? %>
+   <ul class="nav navbar-nav navbar-right">
+     <li>
+      <%= link_to "#{current_user.name}", profile_path(current_user)%>
+     </li>
+     <li>
+       <%= link_to "log out", destroy_user_session_path, method: :delete %>
+     </li>        
+    </ul>
+
   <% else %>
-   <nav class="navbar navbar-default" role="navigation">
-      <ul class="nav-pills navbar-right">  
-        <li>
-          <%= link_to content_tag(:span,  "sign in", class: "navtop"), new_user_session_path %>
-        </li>
-        <li>
-          <%= link_to content_tag(:span, "sign up", class: "navtop"), new_user_registration_path %>
-        </li>        
-      </ul>
-   </nav> 
-  <% end %>
+     <ul class="nav-pills navbar-right">  
+       <li>
+         <%= link_to content_tag(:span,  "sign in", class: "navtop"), new_user_session_path %>
+       </li>
+       <li>
+         <%= link_to content_tag(:span, "sign up", class: "navtop"), new_user_registration_path %>
+       </li>        
+     </ul>
+ <% end %>
+</nav>
+
+
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
@@ -42,24 +63,8 @@
 <% end %>
 
 
-<div class="row">
-  <div class="jumbotron">
-    <div class="col-md-3">
-     <%= link_to "Jam With Friends", root_path %> 
-    </div>
-    <%= form_tag search_path, method: :get do %> 
-    <div class="col-md-3">
-      <%= text_field_tag "search[find]"%>
-    </div>
-    <div class="col-md-3">
-      <%= text_field_tag "search[location]", "#{@location_search}"%>
-    </div>
-    <div class="col-md-3">
-      <%= submit_tag 'Find awesome people'%>
-    </div>
-    <% end %>
-  </div>    
-</div>
+
+    
   <%= yield %>
 </div>
 </body>
