@@ -3,23 +3,31 @@ $navbar-height: 6px;
 @import 'bootstrap';
 
 
+
 .navbar-nav {
   li{
     a{
-  padding: 0 1.5em 0 1.5em;      
+  padding: 0 1.5em 0 1.5em;
+  margin: auto;      
     }
   }
 }
 
 .navbar-form {
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
 }
 
 .navbar-form .form-group {
-text-align: center;
+  text-align: center;
+  input {
+     width: 350px;
+  }
 }
 
 .logo {
-  width: 80px;
+  width: 60px;
+}
+.nav .navbar-nav .navbar-right{
+  vertical-align: auto;
 }
