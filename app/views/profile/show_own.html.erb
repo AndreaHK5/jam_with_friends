@@ -29,5 +29,6 @@
 <% end %>
 <% if current_user.eql?(@user) %>
 <%= link_to "edit profile", edit_profile_path(current_user)  %>
+<%= link_to "password reset", edit_user_registration_path %>
 <% end %>
 
