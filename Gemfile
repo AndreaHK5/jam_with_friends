@@ -37,6 +37,7 @@ gem 'devise', '3.1.1'
 
 gem 'geocoder', '1.1.9'
 gem 'gmaps4rails'
+gem 'chosen-rails'
 
 group :development do
   gem 'better_errors'
@@ -55,6 +56,9 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+# group :assets do
+#   gem 'chosen-rails'
+# end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

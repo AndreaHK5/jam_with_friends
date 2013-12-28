@@ -10,10 +10,15 @@ class SearchController < ApplicationController
       generes_sought
       location_sought 
       radius_sought
-      update_with_free_search
+
+      if @safe_params[:find] != nil
+        update_with_free_search
+      end
+
       if @instruments_searched.empty?
         @instruments_searched = Instrument.all
       end
+      
       if @generes_searched.empty?
         @generes_searched = Genere.all
       end
@@ -46,7 +51,9 @@ class SearchController < ApplicationController
   end
 
   def instruments_sought
-    unless @safe_params["instrument_id"] == nil
+    if @safe_params["instrument_id"] == nil
+      @instruments_searched = Instrment.all
+    else
       if @safe_params["instrument_id"].include?("all")
         @instruments_searched = Instrument.all
       else
@@ -60,7 +67,9 @@ class SearchController < ApplicationController
   end
 
   def generes_sought
-    unless  @safe_params["genere_id"] == nil
+    if @safe_params["genere_id"] == nil
+      @generes_searched = Genere.all
+    else
       if @safe_params["genere_id"].include?("all")
         @generes_searched = Genere.all
       else
