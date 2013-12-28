@@ -6,11 +6,32 @@
     playing 
     <strong><%= @instruments.collect {|i| i.name}.join(", ")%></strong></h3>
 </div>
+
 <div class="row">
   <div class="col-md-4">
-    <ul><% @users.each do |user| %>
-      <li>
-        <%= link_to user.name, profile_path(user) %> <%= user.location.address %> <%= user.generes.collect {|g| g.name} %> <%= user.instruments.collect {|g| g.name} %>
+    <ul class="list-group"><% @users.each do |user| %>
+      <li class="list-group-item">
+        <div class="usr-basic-info-top">
+            <div class="profile-image">
+            <%= link_to(image_tag("#{user.pers_picture}", class: "profile-image"), profile_path(user)) %>
+            </div>
+            <div class="basic-info">
+             <%= link_to user.name, profile_path(user) %><br>
+              Generes: <strong><%= user.generes.collect {|g| g.name}.join(", ") %></strong><br> 
+             Instruments: <strong><%= user.instruments.collect {|g| g.name}.join(", ") %></strong> 
+            </div>
+        </div>
+        <div class="usr-basic-info-bottom">
+          <p>
+          Home location: <%= user.location.address %> 
+          </p>
+          <p>
+          Contact: <% if user_signed_in?  %>
+            <%= user.email %>          
+          <% else %>
+            Login/Sign Up to contact me!
+          <% end %>
+        </div>
       </li>
       <% end %>
     </ul>
