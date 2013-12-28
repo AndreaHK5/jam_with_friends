@@ -4,28 +4,28 @@ class SearchController < ApplicationController
       redrect_to root_path
     else
       safe_params
-      @instruments_searched = []
-      @generes_searched = []
+      @instruments = []
+      @generes = []
+      if @safe_params[:find] != nil
+        update_with_free_search
+      end
       instruments_sought
       generes_sought
       location_sought 
       radius_sought
+      binding.pry
 
-      if @safe_params[:find] != nil
-        update_with_free_search
-      end
-
-      if @instruments_searched.empty?
-        @instruments_searched = Instrument.all
+      if @instruments.empty?
+        @instruments = Instrument.all
       end
       
-      if @generes_searched.empty?
-        @generes_searched = Genere.all
+      if @generes.empty?
+        @generes = Genere.all
       end
       @users = []
       @locations = Location.near(@location_search, @radius_search)
-      @instruments_searched.each do |i|
-        @generes_searched.each do |g|
+      @instruments.each do |i|
+        @generes.each do |g|
           @user_matching = User.search_by_genere(g.id).search_by_instrument(i.id)
           @locations.each do |l|
             if @user_matching.to_a.include?(l.user)
@@ -52,15 +52,17 @@ class SearchController < ApplicationController
 
   def instruments_sought
     if @safe_params["instrument_id"] == nil
-      @instruments_searched = Instrment.all
+      if @instruments.empty?
+        @instruments = Instrument.all
+      end
     else
       if @safe_params["instrument_id"].include?("all")
-        @instruments_searched = Instrument.all
+        @instruments = Instrument.all
       else
         @ids = @safe_params["instrument_id"]
-        @instruments_searched = []
+        @instruments = []
         @ids.each do |instrument_id|
-          @instruments_searched << Instrument.search_by_id(instrument_id).first
+          @instruments << Instrument.search_by_id(instrument_id).first
         end
       end
     end
@@ -68,34 +70,35 @@ class SearchController < ApplicationController
 
   def generes_sought
     if @safe_params["genere_id"] == nil
-      @generes_searched = Genere.all
+      if @generes.empty?
+      @generes = Genere.all
+    end
     else
       if @safe_params["genere_id"].include?("all")
-        @generes_searched = Genere.all
+        @generes = Genere.all
       else
         @ids = @safe_params["genere_id"]
-        @generes_searched = []
+        @generes = []
         @ids.each do |genere_id|
-          @generes_searched << Genere.search_by_id(genere_id).first
+          @generes << Genere.search_by_id(genere_id).first
         end
       end
     end
   end
 
   def update_with_free_search
-
     if !@safe_params[:find].empty?
       @safe_params[:find].split(' ').each do |find|
       instrument = Instrument.search_by_name(find)
       if !instrument.empty?
-      @instruments_searched << instrument.first
+      @instruments << instrument.first
       end
-      @instruments_searched.uniq
+      @instruments.uniq
       genere = Genere.search_by_name(find)
       if !genere.empty?
-      @generes_searched << genere.first
+      @generes << genere.first
       end
-      @generes_searched.uniq
+      @generes.uniq
       # would be cool to search as well if the search params has alreay inside the insuments and generes, in order to prevent calling uniq
       # also, would be cool to skip the generes search in case the instrument search is positive (something is either an instrument or a genere)
       end
