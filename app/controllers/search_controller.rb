@@ -13,7 +13,6 @@ class SearchController < ApplicationController
       generes_sought
       location_sought 
       radius_sought
-      binding.pry
 
       if @instruments.empty?
         @instruments = Instrument.all
