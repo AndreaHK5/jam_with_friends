@@ -1,8 +1,8 @@
 <h2><%= @user.name %> </h2>
 <h3> Instruments </h3>
 
-<% if current_user.instruments != nil %>
-  <% current_user.instruments.each do |instrument| %>
+<% if @user.instruments != nil %>
+  <% @user.instruments.each do |instrument| %>
     <p><%= instrument.name %></p>
   <% end %>
 <% else %>
@@ -10,8 +10,8 @@
 <% end %>
 
 <h3> Generes </h3>
-<% if current_user.generes != nil %>
-  <% current_user.generes.each do |generes| %>
+<% if @user.generes != nil %>
+  <% @user.generes.each do |generes| %>
     <p><%= generes.name %></p>
   <% end %>
 <% else %>
@@ -19,11 +19,11 @@
 <% end %>
 
 <h3> Location </h3>
-<% if current_user.location != nil %>
-  <p>Address: <%= current_user.location.address %></p>
-  <p>Latitude: <%= current_user.location.latitude %></p>
-  <p>Longitude: <%= current_user.location.longitude %></p>
-  <p>Radius: <%= current_user.location.radius %>   (miles)</p>
+<% if @user.location != nil %>
+  <p>Address: <%= @user.location.address %></p>
+  <p>Latitude: <%= @user.location.latitude %></p>
+  <p>Longitude: <%= @user.location.longitude %></p>
+  <p>Radius: <%= @user.location.radius %>   (miles)</p>
 <% else %>
 <p>no location yet...</p>
 <% end %>
