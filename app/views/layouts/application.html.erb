@@ -19,14 +19,13 @@
 
      <% if user_signed_in? %>
         <div class="nav pull-right">
-          <%= link_to "#{current_user.name}", profile_path(current_user)%>
-          <%= link_to "log out", destroy_user_session_path, method: :delete %>
+          <%= link_to "#{current_user.name}", profile_path(current_user) , class: "navtop sign-up"%>
+          <%= link_to "log out", destroy_user_session_path, method: :delete, class: "navtop" %>
         </div>
       <% else %>
         <div class="nav pull-right">
-          <%= link_to content_tag(:span,  "sign in", class: "navtop"), new_user_session_path %>
-
-          <%= link_to content_tag(:span, "sign up", class: "navtop"), new_user_registration_path %>
+          <%= link_to content_tag(:span, "sign up", class: "navtop sign-up"), new_user_registration_path %>
+          <%= link_to content_tag(:span,  "sign in", class: "navtop"), new_user_session_path %>  
         </div>
       <% end %>
 
@@ -43,7 +42,7 @@
           </div>
          <%= text_field_tag "search[location]", "Brooklyn, Manhattan, Feletto...", :onclick => 'if($(this).val()=="Brooklyn, Manhattan, Feletto..."){$(this).val("");};', class: "top-search"%>
           <%= button_tag(:type => 'submit', :class => 'btn  btn-default btn-top') do %>
-           <i class="glyphicon glyphicon-search top-search"></i>
+           <i class="glyphicon glyphicon-search"></i>
           <% end %>
           <% end %>
       </div>
@@ -52,7 +51,7 @@
   </div> 
 </nav>
 
-
+<div class="container">  
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
@@ -62,9 +61,7 @@
   <% end %>
 <% end %>
 
-
-
-<div class="container">    
+  
   <%= yield %>
 </div>
 </body>
