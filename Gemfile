@@ -43,6 +43,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'rb-fsevent'
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
 

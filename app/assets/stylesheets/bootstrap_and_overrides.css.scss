@@ -10,9 +10,7 @@
 
 .navbar-inner{
     text-align:center;
-    height: 50px;
 }
-
 
 .form-group {
   text-align: center;
@@ -28,4 +26,30 @@
   line-height: 80%;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.top-search {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0;
+  margin-right: 8px;
+  border-left: 0px;
+}
+
+.btn-top {
+  padding: 0 5px;
+}
+
+.label-find {
+  padding: 2.5px;
+  border: 2px inset;
+  border-right: 0px;
+  display: inline;
+  font-weight: bold;
+  background-color: white;
+  margin: 5px 0px 5px 5px;
+  padding-right: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
