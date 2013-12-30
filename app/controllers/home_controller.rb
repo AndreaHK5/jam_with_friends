@@ -15,5 +15,6 @@ class HomeController < ApplicationController
     prepare_hash_for_map
     @instruments = Instrument.all
     @generes = Genere.all
+
   end
 end

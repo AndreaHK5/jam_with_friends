@@ -11,26 +11,34 @@
   <div class="col-md-4">
     <ul class="list-group"><% @users.each do |user| %>
       <li class="list-group-item">
-        <div class="usr-basic-info-top">
-            <div class="profile-image">
-            <%= link_to(image_tag("#{user.pers_picture}", class: "profile-image"), profile_path(user)) %>
-            </div>
-            <div class="basic-info">
-             <%= link_to user.name, profile_path(user) %><br>
-              Generes: <strong><%= user.generes.collect {|g| g.name}.join(", ") %></strong><br> 
-             Instruments: <strong><%= user.instruments.collect {|g| g.name}.join(", ") %></strong> 
-            </div>
+
+       <div class="profile-image">
+        <%= link_to(image_tag("#{user.pers_picture}", class: "profile-image-inner"), profile_path(user)) %>
+       </div>
+       <div class="basic-info-top">
+          <div class= "basic-info-content basic-info-name">
+            <%= link_to user.name, profile_path(user) %>
+          </div>
+          <div class= "basic-info-content">
+            <%= user.generes.collect {|g| g.name}.join(", ") %>
+          </div>
+          <div class= "basic-info-content">
+            <%= user.instruments.collect {|g| g.name}.join(", ") %>
+          </div>
         </div>
-        <div class="usr-basic-info-bottom">
-          <p>
-          Home location: <%= user.location.address %> 
-          </p>
-          <p>
-          Contact: <% if user_signed_in?  %>
-            <%= user.email %>          
-          <% else %>
-            Login/Sign Up to contact me!
-          <% end %>
+
+        <div class="basic-info-bottom">
+          <div class="basic-info-bottom-content">
+            Home location: <%= @location_search %>
+          </div>
+          <div class="basic-info-bottom-content">
+          Contact: 
+            <% if user_signed_in?  %>
+              <%= user.email %>
+            <% else %>
+              <%= link_to content_tag(:span, "sign up/sign in"), new_user_registration_path %>
+            <% end %>
+          </div>  
         </div>
       </li>
       <% end %>

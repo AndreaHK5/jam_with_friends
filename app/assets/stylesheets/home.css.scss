@@ -11,16 +11,6 @@
  width: 250px; 
 }
 
-.profile-image {
-  float: left;
-  width: 100px;
-}
-
-.basic-info {
-  margin-left: 108px;
-  width: 150px;
-}
-
 .page-header {
   margin: 0 auto;
 }
@@ -33,3 +23,47 @@
 .call-out {
   font-size: 24px;
 }
+
+.list-group-item {
+  margin-top: 5px;
+}
+
+.profile-image {
+  display: block;
+  float: left;
+  width: 80px;
+  height: 80px; 
+  overflow: hidden;
+}
+
+.profile-image-inner {
+  width: 80px;
+}
+
+.basic-info-top {
+  display: block;
+  height: 80px;
+}
+
+.basic-info-content {
+  margin: 0 0 0 90px;
+  display: block;
+  font-weight: 700;
+}
+
+.basic-info-name {
+  margin-top: -2px;
+  font-size: 18px;
+}
+
+.basic-info-bottom {
+  margin-top: 2px;
+  display: block;
+  height: 40px;
+  font-size: 14px;
+}
+
+.basic-info-bottom-content { 
+}
+
+
