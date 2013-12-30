@@ -1,44 +1,31 @@
-$navbar-margin-bottom: 0;
-$navbar-height: 6px;
 @import 'bootstrap';
 
-.page-header {
-  background-color: #CCCCCC;
-  text-align: center;
-  margin: 0 auto 0.3em auto;
-  border-radius: 0.3em;
-  h3 {
-    font-size: 1.2em;
-    margin: 0 auto;
-    padding-top: 0.2em;
-    padding-top: 0.2em;
-  }
+.navbar {
+  background-color: #15070F;
+}
+.nav.nav-center {
+    margin:0;
+    float:none;
 }
 
-.navbar-nav {
-  li{
-    a{
-  padding: 0.5em 1.5em;
-  margin: auto;      
-    }
-  }
+.navbar-inner{
+    text-align:center;
+    height: 50px;
 }
 
-.navbar-form {
-  margin: auto;
-  text-align: center;
-}
 
-.navbar-form .form-group {
+.form-group {
   text-align: center;
   input {
-     width: 350px;
+     width: 250px;
   }
 }
 
 .logo {
-  width: 60px;
-}
-.nav .navbar-nav .navbar-right{
-  vertical-align: auto;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;
+  line-height: 80%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
