@@ -21,3 +21,7 @@ module JamWithFriends
     # config.i18n.default_locale = :de
   end
 end
+
+
+config.paths['app/views'] << "app/views/devise"
+# for the redirect after the sign up page
