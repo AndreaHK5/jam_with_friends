@@ -10,60 +10,55 @@
 <body>
 
 <div class="bg-bottom"></div>
-  <div class="bg-page">
-<nav class="navbar">
-  <div class="container">
-    <div class="navbar-inner">
-     <div class="nav pull-left logo">
-      <%= link_to "Jam with<br />Friends".html_safe, root_path %>
-     </div>  
-
-
-     <% if user_signed_in? %>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+       <div class="nav pull-left logo">
+        <%= link_to "Jam with<br />Friends".html_safe, root_path %>
+      </div>  
+       <% if user_signed_in? %>
         <div class="nav pull-right">
-          <%= link_to "#{current_user.name}", profile_path(current_user) , class: "navtop sign-up"%>
-          <%= link_to "log out", destroy_user_session_path, method: :delete, class: "navtop" %>
+         <%= link_to "#{current_user.name}", profile_path(current_user) , class: "navtop sign-up"%>
+         <%= link_to "log out", destroy_user_session_path, method: :delete, class: "navtop" %>
         </div>
-      <% else %>
-        <div class="nav pull-right">
-          <%= link_to content_tag(:span, "sign up", class: "navtop sign-up"), new_user_registration_path %>
-          <%= link_to content_tag(:span,  "sign in", class: "navtop"), new_user_session_path %>  
+       <% else %>
+           <div class="nav pull-right">
+             <%= link_to content_tag(:span, "sign up", class: "navtop sign-up"), new_user_registration_path %>
+             <%= link_to content_tag(:span,  "sign in", class: "navtop"), new_user_session_path %>  
+           </div>
+       <% end %>
+        <div class="nav nav-center form-group">
+           <%= form_tag search_path, method: :get, class: "top-search"  do %>
+            <div class="label-find">
+               Find
+             </div>
+             <%= text_field_tag "search[find]", "Instrument, Genere...", :onclick => 'if($(this).val()=="Instrument, Genere..."){$(this).val("");};', class: "top-search"%>
+              <div class="label-find">
+                Near
+              </div>
+             <%= text_field_tag "search[location]", "Brooklyn, Manhattan, Feletto...", :onclick => 'if($(this).val()=="Brooklyn, Manhattan, Feletto..."){$(this).val("");};', class: "top-search"%>
+             <%= button_tag(:type => 'submit', :class => 'btn  btn-default btn-top') do %>
+                <i class="glyphicon glyphicon-search"></i>
+             <% end %>
+           <% end %>
         </div>
+      </div>
+    </div> 
+  </nav>
+
+  <div class="container container-bottom">
+    <div class="bottom-content">
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+            </button>
+              <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
       <% end %>
-
-
-
-     <div class="nav nav-center form-group">
-        <%= form_tag search_path, method: :get, class: "top-search"  do %>
-         <div class="label-find">
-            Find
-          </div>
-          <%= text_field_tag "search[find]", "Instrument, Genere...", :onclick => 'if($(this).val()=="Instrument, Genere..."){$(this).val("");};', class: "top-search"%>
-         <div class="label-find">
-          Near
-          </div>
-         <%= text_field_tag "search[location]", "Brooklyn, Manhattan, Feletto...", :onclick => 'if($(this).val()=="Brooklyn, Manhattan, Feletto..."){$(this).val("");};', class: "top-search"%>
-          <%= button_tag(:type => 'submit', :class => 'btn  btn-default btn-top') do %>
-           <i class="glyphicon glyphicon-search"></i>
-          <% end %>
-          <% end %>
-      </div>
-
+      <%= yield %>
     </div>
-  </div> 
-</nav>
-
-<div class="container container-bottom"> 
-  <% flash.each do |name, msg| %>
-    <% if msg.is_a?(String) %>
-      <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      </div>
-    <% end %>
-  <% end %>
-  <%= yield %>
-</div>
-</div>
+  </div>
 </body>
 </html>

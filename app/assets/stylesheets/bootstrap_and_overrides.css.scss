@@ -1,25 +1,28 @@
 @import 'bootstrap';
 
-.bg-page {
-  background-color: rgba(153, 235, 255,0.3);
-  z-index: -1;
+.container-bottom {
+/*  background-color: rgba(153, 235, 255,0.3);
+  z-index: -1;*/
+  border-right: 1px solid rgb(204, 204, 200);
+  border-left: 1px solid rgb(204, 204, 200);
+
 }
 
-.container-bottom {
+/*.container-bottom {
  background-color: rgba(221, 255, 252,0.7); 
  z-index: 0;
-}
+}*/
 
 .bg-bottom {
   position: absolute;
   z-index: -2;
   top: 20px;
   bottom: 0;
-  background: url("bg-bottom.jpg") no-repeat; 
-  opacity: .3;
-  width: 110%;
-  height: 110%;
-  background-size:cover;
+  background: url("bg-bottom.jpg");
+  background-repeat: repeat; 
+  opacity: .04;
+  width: 100%;
+  background-size: 10%;
   filter: grayscale(100%) invert(100%); 
   -webkit-filter: grayscale(100%) invert(100%);
   -moz-filter: grayscale(100%) invert(100%);
