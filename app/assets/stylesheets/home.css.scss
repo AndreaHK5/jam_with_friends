@@ -3,12 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "chosen";
 
-.chzn-search {
-  width: 180px;
-}
 
 .loc-search {
- width: 250px; 
+ width: 180px;
+ height: 20px; 
 }
 
 .page-header {
@@ -64,7 +62,33 @@
   font-size: 14px;
 }
 
-.basic-info-bottom-content { 
+
+.form-component-l {
+  width: 200px;
+  display: inline;
+  float:left;
+  margin-bottom: 15px;
 }
 
+.form-component-s {
+  width: 60px;
+  display: inline;
+  float:left;
+}
+
+.btn-adv-search {
+  padding: 10px 15px;
+
+}
+
+.chzn-label {
+}
+
+.chzn-search {
+  width: 180px;
+}
+
+.chosen-container {
+  display: block;
+}
 

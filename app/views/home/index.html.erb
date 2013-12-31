@@ -29,7 +29,7 @@
 
         <div class="basic-info-bottom">
           <div class="basic-info-bottom-content">
-            Home location: <%= Geocoder.search(@location_search).first.city %>
+            Home location: <%= user.location.address %>
           </div>
           <div class="basic-info-bottom-content">
           Contact: 
@@ -45,19 +45,32 @@
     </ul>
   </div>  
   <div class="col-md-8">
-     <p>Advanced search</p>
-    <%= form_tag search_path, method: :get do %> 
-     <%= label_tag :search, "Instrument(s)" %>
-     <%= collection_select(:search, :instrument_id, Instrument.all, :id, :name, {include_hidden: false} , {multiple: true, :class => "chzn-search"}) %>
-     <%= label_tag :search, "Genere(s)" %>
-     <%= collection_select(:search, :genere_id, Genere.all, :id, :name,{include_hidden: false}, {multiple: true, :class => "chzn-search"}) %><br>
-     <%= label_tag "Location" %>
-     <%= text_field_tag "search[location]", @location_search, {:class => "loc-search"}%>
-     <%= label_tag "Interest Radius (mi)" %>
-     <%= select(:search,:radius, [1,5,10,20,30]) %><br>
-     <%= submit_tag 'Search'%>
-    <% end %>
-
+    <div class="advanced-search"> 
+      <%= form_tag search_path, method: :get do %>
+      <p>Advanced search</p>
+        <div class="form-component-l">
+         <%= label_tag :search, "Instrument" %>
+         <%= collection_select(:search, :instrument_id, Instrument.all, :id, :name, {include_hidden: false} , {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Instrument(s)"}) %>
+        </div>
+        <div class="form-component-l">        
+         <%= label_tag :search, "Genere", class: "chzn-label" %>
+         <%= collection_select(:search, :genere_id, Genere.all, :id, :name,{include_hidden: false}, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)"}) %>    
+        </div>
+        <div class="form-component-l">
+         <%= label_tag "Location" %>
+         <%= text_field_tag "search[location]", @location_search, {:class => "loc-search"}%>        
+        </div>
+        <div class="form-component-s">
+         <%= label_tag "Radius" %>
+         <%= select(:search,:radius, [1,5,10,20,30]) %>
+       </div>
+       <div class="form-component-s" style="float: right">
+        <%= button_tag(:type => 'submit', :class => 'btn  btn-default btn-adv-search') do %>
+          <i class="glyphicon glyphicon-search"></i>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
     <div id="map" style='width: 100%; height: 400px;'>
     </div>
      <script type="text/javascript">

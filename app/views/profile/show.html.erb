@@ -21,8 +21,6 @@
 <h3> Location </h3>
 <% if @user.location != nil %>
   <p>Address: <%= @user.location.address %></p>
-  <p>Latitude: <%= @user.location.latitude %></p>
-  <p>Longitude: <%= @user.location.longitude %></p>
   <p>Radius: <%= @user.location.radius %>   (miles)</p>
 <% else %>
 <p>no location yet...</p>
