@@ -29,7 +29,7 @@
 
         <div class="basic-info-bottom">
           <div class="basic-info-bottom-content">
-            Home location: <%= @location_search %>
+            Home location: <%= Geocoder.search(@location_search).first.city %>
           </div>
           <div class="basic-info-bottom-content">
           Contact: 
@@ -68,11 +68,9 @@
       handler.fitMapToBounds();
       handler.getMap().setZoom(12);
     });
-    </script>
-
+  </script>
   </div>
 </div>
-
 
 
 

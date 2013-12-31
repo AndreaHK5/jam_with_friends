@@ -16,5 +16,10 @@ class HomeController < ApplicationController
     @instruments = Instrument.all
     @generes = Genere.all
 
+    # @users =[User.first]
+    # @instruments = [Instrument.first]
+    # @generes = [Genere.first]
+    # @location_search = "20 crooke ave 11226 ny"
+
   end
 end
