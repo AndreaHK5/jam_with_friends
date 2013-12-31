@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228214814) do
+ActiveRecord::Schema.define(version: 20131231230650) do
 
   create_table "generes", force: true do |t|
     t.string   "name"
@@ -29,21 +29,21 @@ ActiveRecord::Schema.define(version: 20131228214814) do
   add_index "guassociations", ["genere_id"], name: "index_guassociations_on_genere_id"
   add_index "guassociations", ["user_id"], name: "index_guassociations_on_user_id"
 
-  create_table "instruments", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "iuassociations", force: true do |t|
+  create_table "instrexps", force: true do |t|
     t.integer  "user_id"
     t.integer  "instrument_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "iuassociations", ["instrument_id"], name: "index_iuassociations_on_instrument_id"
-  add_index "iuassociations", ["user_id"], name: "index_iuassociations_on_user_id"
+  add_index "instrexps", ["instrument_id"], name: "index_instrexps_on_instrument_id"
+  add_index "instrexps", ["user_id"], name: "index_instrexps_on_user_id"
+
+  create_table "instruments", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "locations", force: true do |t|
     t.string   "address"

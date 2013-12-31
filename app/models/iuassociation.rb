@@ -1,4 +1,4 @@
-class Iuassociation < ActiveRecord::Base
+class Instrexp < ActiveRecord::Base
   belongs_to :user
   belongs_to :instrument
 
