@@ -5,8 +5,6 @@ class SearchController < ApplicationController
     else
       safe_params
       # this shoudl not happen here, i shoudl search, if the search is empty BUT @instruments or @generes are there do not re initialise
-      @instruments_old = @instruments
-      @generes_old = @generes
 
       @instruments = []
       @generes = []
@@ -22,11 +20,11 @@ class SearchController < ApplicationController
       radius_sought
 
       if @instruments.empty?
-        @instruments = @instruments_old
+        @instruments = Instrument.all
       end
       
       if @generes.empty?
-        @generes = @generes_old
+        @generes = Genere.all
       end
 
       @users = []
