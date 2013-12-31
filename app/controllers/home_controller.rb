@@ -13,9 +13,8 @@ class HomeController < ApplicationController
     @users = @locations.each.collect {|l| l.user}
     @users.delete(current_user)
     prepare_hash_for_map
-    @instruments = Instrument.all
-    @generes = Genere.all
-
+    @instruments_current = []
+    @generes_current = []
     # @users =[User.first]
     # @instruments = [Instrument.first]
     # @generes = [Genere.first]

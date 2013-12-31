@@ -4,13 +4,18 @@ class SearchController < ApplicationController
       redrect_to root_path
     else
       safe_params
+      # this shoudl not happen here, i shoudl search, if the search is empty BUT @instruments or @generes are there do not re initialise
+
       @instruments = []
       @generes = []
+      
       if @safe_params[:find] != nil
         update_with_free_search
       end
+      
       instruments_sought
       generes_sought
+      
       location_sought 
       radius_sought
 
@@ -21,6 +26,7 @@ class SearchController < ApplicationController
       if @generes.empty?
         @generes = Genere.all
       end
+
       @users = []
       @locations = Location.near(@location_search, @radius_search)
       @instruments.each do |i|
@@ -39,6 +45,8 @@ class SearchController < ApplicationController
       @users.delete(current_user)
 
       prepare_hash_for_map
+      @instruments_current = @instruments.collect {|i| i.id}
+      @generes_current = @generes.collect {|g| g.id}
       render 'home/index' 
     end
   end
