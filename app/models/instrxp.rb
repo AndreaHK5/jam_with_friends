@@ -1,4 +1,4 @@
-class Instrexp < ActiveRecord::Base
+class Instrxp < ActiveRecord::Base
   belongs_to :user
   belongs_to :instrument
 

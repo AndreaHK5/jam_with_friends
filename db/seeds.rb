@@ -29,6 +29,10 @@ puts "making fake users"
     rand(1..3).times do |i|
       user.instruments << Instrument.where(id: instruments.delete_at(rand(instruments.length)))
     end
+    user.instrxps.each do |iexp|
+      iexp.since = rand(1999..2013)
+      iexp.save
+    end
     generes =*(1..8)
     rand(1..3).times do |g|
       user.generes << Genere.where(id: generes.delete_at(rand(generes.length)))
