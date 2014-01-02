@@ -5,8 +5,8 @@
  <p>No insturments yet...</p>
  <%= link_to "add instruments to become searcheable!", edit_profile_path(current_user)  %>
 <% else %>
-  <% current_user.instruments.each do |instrument| %>
-    <p><%= instrument.name %></p>
+  <% current_user.instrxps.each do |xp| %>
+    <p><%= xp.instrument.name %>, played since <%= xp.since %></p>
   <% end %> 
 <% end %>
 

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :instruments, :generes
   validates :email, uniqueness: true
   validates :name, uniqueness: true
+  accepts_nested_attributes_for :instrxps
+  accepts_nested_attributes_for :instruments
 
 # first version WORS, without string sanitation!
   # scope :search_by_genere, ->(genere) { joins(:generes).where('generes.id' => genere)}

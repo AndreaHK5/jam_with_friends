@@ -30,6 +30,7 @@ class ProfileController < ApplicationController
 
   def update
    safe_params
+   binding.pry
     if @safe_params[:instrument_id] == nil
       current_user.instruments = []
       flash[:notice] = flash[:notice].to_s + " \n no instruments =("

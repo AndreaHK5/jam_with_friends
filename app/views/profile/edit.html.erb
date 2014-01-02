@@ -2,10 +2,26 @@
 <h3> add an instrument to your profile? <h3>
 <%= form_for @current_user, :url => { :id => @current_user.id, :action => "update"}, :html => { :method => :put } do |f|  %>
     <h2> instruments </h2>
-    <% Instrument.all.each do |instrument| %>
-      <%= check_box_tag "user[instrument_id][]", instrument.id, @current_user.instrument_ids.include?(instrument.id), id: dom_id(instrument) %>
-      <%=label_tag dom_id(instrument),  instrument.name %> <br> 
+    <% @current_user.instrxps.each do |i| %>
+        <%= fields_for i do |i1| %>
+        <p>
+            <%= i1.select :instrument, Instrument.all.map {|i2| i2.name},{:selected => i.instrument.name} %>
+            <%= i1.select :since, (1947..2013), {:include_blank => true, :selected => i.since}  %>
+        </p>
+        <% end %>
     <% end %>
+    <%= fields_for :instrxp do |i1| %>
+        <p>
+            <%= i1.select :instrument, Instrument.all.map {|i2| i2.name}, {:include_blank => true} %>
+            <%= i1.select :since, (1947..2013), {:include_blank => true}  %>
+        </p>
+        <% end %>
+            <%= fields_for :instrxp do |i1| %>
+        <p>
+            <%= i1.select :instrument, Instrument.all.map {|i2| i2.name}, {:include_blank => true} %>
+            <%= i1.select :since, (1947..2013), {:include_blank => true}  %>
+        </p>
+        <% end %>
     <p>
     <%= link_to "Add a new Insturment", new_instrument_path %>
     </p>

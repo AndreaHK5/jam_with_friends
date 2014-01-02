@@ -24,7 +24,11 @@ class ApplicationController < ActionController::Base
     if Rails.env.development?
       ip = request_ip
       response = Geocoder.search(ip)
-      response.first.city
+      if response.empty?
+        "Manhattan, NY, USA"
+      else
+        response.first.city
+      end
     else
       request.location
     end
