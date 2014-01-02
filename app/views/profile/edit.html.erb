@@ -3,35 +3,33 @@
 <%= form_for @current_user, :url => { :id => @current_user.id, :action => "update"}, :html => { :method => :put } do |f|  %>
     <h2> instruments </h2>
     <% @current_user.instrxps.each do |i| %>
-        <%= fields_for i do |i1| %>
+        <%= fields_for :instrxp do |i1| %>
         <p>
-            <%= i1.select :instrument, Instrument.all.map {|i2| i2.name},{:selected => i.instrument.name} %>
-            <%= i1.select :since, (1947..2013), {:include_blank => true, :selected => i.since}  %>
+            <%= select :instrxp, :instrument, Instrument.all.map {|i2| i2.name},{:selected => i.instrument.name} %>
+            <%= select :instrxp, :since, (1947..2013), {:include_blank => true, :selected => i.since}  %>
         </p>
         <% end %>
     <% end %>
-    <%= fields_for :instrxp do |i1| %>
+    <%= f.fields_for "[instrxp][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
         <p>
             <%= i1.select :instrument, Instrument.all.map {|i2| i2.name}, {:include_blank => true} %>
             <%= i1.select :since, (1947..2013), {:include_blank => true}  %>
         </p>
         <% end %>
-            <%= fields_for :instrxp do |i1| %>
+     <%= f.fields_for "[instrxp][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
         <p>
             <%= i1.select :instrument, Instrument.all.map {|i2| i2.name}, {:include_blank => true} %>
             <%= i1.select :since, (1947..2013), {:include_blank => true}  %>
         </p>
         <% end %>
     <p>
-    <%= link_to "Add a new Insturment", new_instrument_path %>
+    <%= link_to "Can't find your instrument? Add a new Insturment to our database", new_instrument_path %>
     </p>
     <h2> generes </h2>
-    <% Genere.all.each do |genere| %>
-      <%= check_box_tag "user[genere_id][]", genere.id, @current_user.genere_ids.include?(genere.id), id: dom_id(genere) %>
-      <%=label_tag dom_id(genere),  genere.name %> <br> 
-    <% end %>
     <p>
-    <%= link_to "Add a new genere", new_genere_path %>
+         <%= f.collection_select(:generes, Genere.all, :id, :name,{include_hidden: false, :selected => @current_user.genere_ids}, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)", :selected => @current_user.genere_ids}) %>
+
+    <br><%= link_to "Can't find your genere? Add a new Genere to our database", new_genere_path %>
     </p>
     <h2> location </h2>
     <%= f.label :location %>
