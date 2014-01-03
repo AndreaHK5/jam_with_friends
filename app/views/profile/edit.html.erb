@@ -27,7 +27,7 @@
     </p>
     <h2> generes </h2>
     <p>
-         <%= f.collection_select(:generes_id, Genere.all, :id, :name,{include_hidden: false, :selected => @current_user.genere_ids}, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)", :selected => @current_user.genere_ids}) %>
+         <%= f.collection_select(:generes_id, Genere.all, :id, :name,{include_hidden: false, :selected => @current_user.genere_ids}, {multiple: true, :class => "chzn-search-profile", "data-placeholder" => "Select Genere(s)", :selected => @current_user.genere_ids}) %>
 
     <br><%= link_to "Can't find your genere? Add a new Genere to our database", new_genere_path %>
     </p>
