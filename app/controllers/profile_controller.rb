@@ -22,14 +22,15 @@ class ProfileController < ApplicationController
   def edit
     @instruments = Instrument.all
     @generes = Genere.all
-    @user = current_user
     if @user.location == nil
       @user.location = Location.first
     end
+    3.times {current_user.instrxps.build } 
   end
 
   def update
    safe_params
+   binding.pry
     if @safe_params[:instrxps] == nil
       current_user.instrxps.each {|i| i.destroy}
       flash[:notice] = flash[:notice].to_s + " \n no instruments =("
@@ -85,5 +86,11 @@ class ProfileController < ApplicationController
       redirect_to root_url, :notice => "Cannot act on different user."
     end
   end
+
+  # def selected_instrument(i)
+ 
+  #    i.instrument.empty?
+  #   i.instrument.id 
+  # end
   
 end
