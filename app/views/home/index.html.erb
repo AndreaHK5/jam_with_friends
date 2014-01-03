@@ -27,7 +27,7 @@
             <%= user.generes.collect {|g| g.name}.join(", ") %>
           </div>
           <div class= "basic-info-content">
-            <%= user.instruments.collect {|g| g.name}.join(", ") %>
+            <%= user.instrxps.collect {|i| "#{i.instrument.name} (#{i.since})"}.join(", ") %>
           </div>
         </div>
 
