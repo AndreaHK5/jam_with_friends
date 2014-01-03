@@ -30,7 +30,6 @@ class ProfileController < ApplicationController
 
   def update
    safe_params
-   binding.pry
     if @safe_params[:instrxps] == nil
       current_user.instrxps.each {|i| i.destroy}
       flash[:notice] = flash[:notice].to_s + " \n no instruments =("
@@ -71,13 +70,18 @@ class ProfileController < ApplicationController
       current_user.location.save
     end
 
+    unless @safe_params[:photo].nil?
+      current_user.photo = @safe_params[:photo]
+      current_user.save
+    end
+
     redirect_to profile_path(current_user)
   end
 
   private
 
     def safe_params
-     @safe_params = params.require(:user).permit(:location, :radius, instrxps: [:instrument_id,:since], :generes_id =>[])
+     @safe_params = params.require(:user).permit(:location, :radius, :photo, instrxps: [:instrument_id,:since], :generes_id =>[])
    end
 
   def check_user
