@@ -37,7 +37,7 @@ puts "making fake users"
     rand(1..3).times do |g|
       user.generes << Genere.where(id: generes.delete_at(rand(generes.length)))
     end
-    user.pers_picture = "andrea.jpg"
+    user.photo = File.open("/Users/Andrea/code/jam_with_friends/app/assets/images/userpic"+rand(1..12).to_s+".jpg")
     user.save
 end
 puts "done with users"

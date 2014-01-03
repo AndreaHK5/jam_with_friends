@@ -5,7 +5,7 @@
     <% @current_user.instrxps.each do |i| %>
         <%= f.fields_for "[instrxps][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
         <p>
-            <%= i1.select :instrument_id, Instrument.all.map {|i2| [i2.name,i2.id]},{:include_blank => true, :selected => (i.instrument.nil? ? nil : i.instrument.id)} %>
+            <%= i1.select :instrument_id, Instrument.all.map {|i2| [i2.name,i2.id]},{:include_blank => true, :selected => i.instrument.try(:id)} %>
             <%= i1.select :since, (1947..2013), {:include_blank => true, :selected => i.since}  %>
         </p>
         <% end %>
