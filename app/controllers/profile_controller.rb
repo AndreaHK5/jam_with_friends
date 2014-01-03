@@ -77,7 +77,7 @@ class ProfileController < ApplicationController
   private
 
     def safe_params
-     @safe_params = params.require(:user).permit(:location, :radius, instrxps: [:instrument_id,:since], :generes_id =>[], :avatar)
+     @safe_params = params.require(:user).permit(:location, :radius, instrxps: [:instrument_id,:since], :generes_id =>[])
    end
 
   def check_user
