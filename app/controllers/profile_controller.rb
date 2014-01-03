@@ -30,23 +30,23 @@ class ProfileController < ApplicationController
 
   def update
    safe_params
-   binding.pry
-    if @safe_params[:instrument_id] == nil
-      current_user.instruments = []
+    if @safe_params[:instrxps] == nil
+      current_user.instrxps.each {|i| i.destroy}
       flash[:notice] = flash[:notice].to_s + " \n no instruments =("
-    else      
-      @ids = @safe_params[:instrument_id]
-      current_user.instruments = []
-      @ids.each do |instrument_id|
-      current_user.instruments << Instrument.search_by_id(instrument_id)
+    else
+      current_user.instrxps.each {|i| i.destroy}
+      @safe_params[:instrxps].each do |andrea|
+        if !andrea[:instrument_id].empty?
+          Instrxp.create(user_id: current_user.id, instrument_id: andrea[:instrument_id].to_i, since: andrea[:since].to_i)
+        end
       end
     end
 
-    if @safe_params[:genere_id] == nil
+    if @safe_params[:generes_id] == nil
       current_user.generes = []
       flash[:notice] = flash[:notice].to_s + " \n no generes =("
     else
-      @ids = @safe_params[:genere_id]
+      @ids = @safe_params[:generes_id]
       current_user.generes = []
       @ids.each do |genere_id|
        current_user.generes << Genere.search_by_id(genere_id)
@@ -76,7 +76,7 @@ class ProfileController < ApplicationController
   private
 
     def safe_params
-     @safe_params = params.require(:user).permit(:location, :radius, :instrument_id => [], :genere_id =>[])
+     @safe_params = params.require(:user).permit(:location, :radius, instrxps: [:instrument_id,:since], :generes_id =>[])
    end
 
   def check_user

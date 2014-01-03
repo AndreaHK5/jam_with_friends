@@ -3,22 +3,22 @@
 <%= form_for @current_user, :url => { :id => @current_user.id, :action => "update"}, :html => { :method => :put } do |f|  %>
     <h2> instruments </h2>
     <% @current_user.instrxps.each do |i| %>
-        <%= fields_for :instrxp do |i1| %>
+        <%= f.fields_for "[instrxps][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
         <p>
-            <%= select :instrxp, :instrument, Instrument.all.map {|i2| i2.name},{:selected => i.instrument.name} %>
-            <%= select :instrxp, :since, (1947..2013), {:include_blank => true, :selected => i.since}  %>
+            <%= i1.select :instrument_id, Instrument.all.map {|i2| [i2.name,i2.id]},{:selected => i.instrument.id} %>
+            <%= i1.select :since, (1947..2013), {:include_blank => true, :selected => i.since}  %>
         </p>
         <% end %>
     <% end %>
-    <%= f.fields_for "[instrxp][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
+    <%= f.fields_for "[instrxps][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
         <p>
-            <%= i1.select :instrument, Instrument.all.map {|i2| i2.name}, {:include_blank => true} %>
+            <%= i1.select :instrument_id, Instrument.all.map {|i2| [i2.name,i2.id] }, {:include_blank => true} %>
             <%= i1.select :since, (1947..2013), {:include_blank => true}  %>
         </p>
         <% end %>
-     <%= f.fields_for "[instrxp][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
+     <%= f.fields_for "[instrxps][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
         <p>
-            <%= i1.select :instrument, Instrument.all.map {|i2| i2.name}, {:include_blank => true} %>
+            <%= i1.select :instrument_id, Instrument.all.map {|i2| [i2.name,i2.id]}, {:include_blank => true} %>
             <%= i1.select :since, (1947..2013), {:include_blank => true}  %>
         </p>
         <% end %>
@@ -27,7 +27,7 @@
     </p>
     <h2> generes </h2>
     <p>
-         <%= f.collection_select(:generes, Genere.all, :id, :name,{include_hidden: false, :selected => @current_user.genere_ids}, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)", :selected => @current_user.genere_ids}) %>
+         <%= f.collection_select(:generes_id, Genere.all, :id, :name,{include_hidden: false, :selected => @current_user.genere_ids}, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)", :selected => @current_user.genere_ids}) %>
 
     <br><%= link_to "Can't find your genere? Add a new Genere to our database", new_genere_path %>
     </p>
