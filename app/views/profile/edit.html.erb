@@ -1,7 +1,7 @@
 
 <h3> add an instrument to your profile? <h3>
-<%= form_for @current_user, :url => { :id => @current_user.id, :action => "update"}, :html => { :method => :put } do |f|  %>
-    <h2> instruments </h2>
+<%= form_for @current_user, :url => { :id => @current_user.id, :action => "update"}, :html => { :method => :put, multipart: true } do |f|  %>
+    <h2> Instruments </h2>
     <% @current_user.instrxps.each do |i| %>
         <%= f.fields_for "[instrxps][]", Instrxp.new, child_index: "NEW_ITEM" do |i1| %>
         <p>
@@ -13,20 +13,25 @@
     <p>
     <%= link_to "Can't find your instrument? Add a new Insturment to our database", new_instrument_path %>
     </p>
-    <h2> generes </h2>
+    <h2> Generes </h2>
     <p>
          <%= f.collection_select(:generes_id, Genere.all, :id, :name,{include_hidden: false, :selected => @current_user.genere_ids}, {multiple: true, :class => "chzn-search-profile", "data-placeholder" => "Select Genere(s)", :selected => @current_user.genere_ids}) %>
 
     <br><%= link_to "Can't find your genere? Add a new Genere to our database", new_genere_path %>
     </p>
-    <h2> location </h2>
+    <h2> Location </h2>
     <%= f.label :location %>
     <%= f.text_field :location, value: "#{@current_user.location.address}" %>
     <br>
     <%= f.label :radius %>
     <%= f.text_field :radius, value: "#{@current_user.location.radius}" %>
     <br>
+    <h2>Picture</h2>
+    <p>
+    <%= f.file_field :photo %>
+    </p>
     <%= f.submit %>
+
   <% end %>
   
 

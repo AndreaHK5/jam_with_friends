@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :instrxps
   accepts_nested_attributes_for :instruments
 
+  has_attached_file :photo
+
 # first version WORS, without string sanitation!
   # scope :search_by_genere, ->(genere) { joins(:generes).where('generes.id' => genere)}
   # scope :search_by_instrument, ->(instrument) { joins(:instruments).where('instruments.id' => instrument)}
