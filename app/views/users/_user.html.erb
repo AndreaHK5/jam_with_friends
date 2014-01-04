@@ -1,0 +1,32 @@
+
+      <li class="list-group-item">
+
+       <div class="profile-image">
+        <%= link_to(image_tag(user.photo.url, class: "profile-image-inner"), profile_path(user)) %>
+       </div>
+       <div class="basic-info-top">
+          <div class= "basic-info-content basic-info-name">
+            <%= link_to user.name, profile_path(user) %>
+          </div>
+          <div class= "basic-info-content">
+            <%= user.generes.collect {|g| g.name}.join(", ") %>
+          </div>
+          <div class= "basic-info-content">
+            <%= user.instrxps.collect {|i| "#{i.instrument.name} (#{i.since})"}.join(", ") %>
+          </div>
+        </div>
+
+        <div class="basic-info-bottom">
+          <div class="basic-info-bottom-content">
+            Home location: <%= user.location.address %>
+          </div>
+          <div class="basic-info-bottom-content">
+          Contact: 
+            <% if user_signed_in?  %>
+              <%= user.email %>
+            <% else %>
+              <%= link_to content_tag(:span, "sign up/sign in"), new_user_registration_path %>
+            <% end %>
+          </div>  
+        </div>
+      </li>

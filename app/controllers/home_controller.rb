@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     @locations = Location.near(@location_search)
     @users = @locations.each.collect {|l| l.user}
     @users.delete(current_user)
+    @users = @users.paginate(:page => params[:page], :per_page => 10)
     prepare_hash_for_map
     @instruments_current = []
     @generes_current = []

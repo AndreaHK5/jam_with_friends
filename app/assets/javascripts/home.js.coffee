@@ -3,4 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $('.chzn-search').chosen()
+jQuery ->
+  $(window).scroll ->
+    if $(window).scrollTop() > $(document).height() - $(window).height() - 50
+      $.getScript($('.pagination .next').attr('href'))
+
   
