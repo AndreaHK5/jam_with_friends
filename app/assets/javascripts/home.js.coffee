@@ -4,8 +4,10 @@
 jQuery ->
   $('.chzn-search').chosen()
 jQuery ->
-  $(window).scroll ->
-    if $(window).scrollTop() > $(document).height() - $(window).height() - 50
-      $.getScript($('.pagination .next').attr('href'))
-
-  
+  if $('.pagination').length
+    $(window).scroll ->
+      url = $('.pagination .next_page').attr('href')
+      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+        $('.pagination').text("Getting more awesome musicians, Hold The Line!")
+        $.getScript(url)
+    $(window).scroll()
