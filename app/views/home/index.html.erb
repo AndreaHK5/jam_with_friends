@@ -17,7 +17,7 @@
       <li class="list-group-item">
 
        <div class="profile-image">
-        <%= link_to(image_tag("#{user.pers_picture}", class: "profile-image-inner"), profile_path(user)) %>
+        <%= link_to(image_tag(user.photo.url, class: "profile-image-inner"), profile_path(user)) %>
        </div>
        <div class="basic-info-top">
           <div class= "basic-info-content basic-info-name">
