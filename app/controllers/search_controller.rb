@@ -43,7 +43,7 @@ class SearchController < ApplicationController
       @users.compact!
       @users = @users.uniq
       @users.delete(current_user)
-
+      @users = @users.paginate(:page => params[:page], :per_page => 10)
       prepare_hash_for_map
       @instruments_current = @instruments.collect {|i| i.id}
       @generes_current = @generes.collect {|g| g.id}
