@@ -1,41 +1,40 @@
 @import 'bootstrap';
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.navbar {
+  position: fixed;
+  height: 40px;
+}
+
+.bg 
+{
+background-image: url('bg3.jpg');
+display:block;
+position: absolute;
+z-index: 1;
+background-repeat: no-repeat;
+background-size: cover;
+width: 100%;
+background-position: fixed;
+background-attachment: fixed;
+}
+
 .container-bottom {
 /*  background-color: rgba(153, 235, 255,0.3);
   z-index: -1;*/
   border-right: 1px solid rgb(204, 204, 200);
   border-left: 1px solid rgb(204, 204, 200);
+  margin-top: 50px;
+  overflow: scroll;
+  height: 800px;
+
 
 }
 
-/*.container-bottom {
- background-color: rgba(221, 255, 252,0.7); 
- z-index: 0;
-}*/
 
-.bg-bottom {
-  position: absolute;
-  z-index: -2;
-  top: 20px;
-  bottom: 0;
-  background: url("bg-bottom.jpg");
-  background-repeat: repeat; 
-  opacity: .04;
-  width: 100%;
-  background-size: 10%;
-  filter: grayscale(100%) invert(100%); 
-  -webkit-filter: grayscale(100%) invert(100%);
-  -moz-filter: grayscale(100%) invert(100%);
-  -ms-filter: grayscale(100%) invert(100%);
-  -o-filter: grayscale(100%) invert(100%);
-}
-
-.navbar {
-  background-color: #15070F;
-  margin-bottom: 0;
-  background-color:black;
-
-}
 .nav.nav-center {
     margin:0;
     float:none;
@@ -46,7 +45,6 @@
 }
 
 .form-group {
-  text-align: center;
   input {
      width: 250px;
   }
