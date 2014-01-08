@@ -33,7 +33,7 @@ class SearchController < ApplicationController
         user: current_user,
         instruments: @instruments,
         generes: @generes,
-        radius: @radius_serach
+        radius: @radius_search
       }
       @users = UserLocator.call(options)
       

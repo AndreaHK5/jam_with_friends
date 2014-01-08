@@ -38,8 +38,7 @@ class User < ActiveRecord::Base
   # end
 
 # third version - all rolled together
-  scope :search_by_genere, ->(query) { joins(:generes).where('generes.id LIKE :query', :query => "#{query}")}
-  scope :search_by_instrument, ->(query) { joins(:instruments).where('instruments.id LIKE :query', :query => "#{query}")}
-  scope :search_by_location, ->(query) { joins(:location).where('locations.id LIKE :query', :query => "#{query}")}
-
+  # scope :search_by_genere, ->(query) { joins(:generes).where('generes.id LIKE :query', :query => "#{query}")}
+  scope :search_by_genere, ->(query)     { includes(:generes).where({ generes: { id: query}})}
+  scope :search_by_instrument, ->(query) { includes(:instruments).where({ instruments: { id: query}})}
 end
