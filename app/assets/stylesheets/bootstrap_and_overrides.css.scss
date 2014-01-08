@@ -57,7 +57,8 @@ background-attachment: fixed;
   line-height: 80%;
   margin-top: 5px;
   margin-bottom: 5px;
-
+  margin-left: -30px;
+  color: #FCFFFC;
 }
 
 .top-search {
@@ -95,4 +96,10 @@ background-attachment: fixed;
 .sign-up {
    font-size: 18px;
    margin-bottom: -1px; 
+  color: #FCFFFC;
+  }
+
+  .topbar {
+    color: #FCFFFC;
+    text-shadow: 0 0 0.2em #000, 0 0 0.2em #000;
   }

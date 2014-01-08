@@ -13,14 +13,15 @@
   margin: 0 auto;
 }
 
-.h3 {
-  margin: 0 auto;
-  font-size: 20px;
+.intro {
+  margin: 20px auto 15px auto;
+  font-size: 35px;
+  text-shadow: 0 0 0.2em #000, 0 0 0.2em #000;
+  line-height: 80%;
+  color: #FCFFFC;
+  text-shadow: 0 0 0.2em #000, 0 0 0.2em #000;
 }
 
-.call-out {
-  font-size: 24px;
-}
 
 .list-group-item {
   margin-top: 5px;
@@ -62,6 +63,10 @@
   font-size: 14px;
 }
 
+.advanced-search {
+  color: #FCFFFC;
+  text-shadow: 0 0 0.2em #000, 0 0 0.2em #000;
+}
 
 .form-component-l {
   width: 200px;
@@ -76,10 +81,19 @@
   float:left;
 }
 
-.btn-adv-search {
-  padding: 10px 15px;
-
+.adv-search-tag {
+  width: 60px;
+  display: block; 
+  margin-left: 170px; 
 }
+
+.btn-link {
+  color: #FCFFFC;
+  text-shadow: 0 0 0.2em #000, 0 0 0.2em #000;
+  font-weight: 300;
+  margin-top: -15px;
+}
+
 
 .chzn-label {
 }
