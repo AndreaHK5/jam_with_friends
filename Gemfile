@@ -50,11 +50,11 @@ group :development do
   gem 'rack-livereload'
 
 end
+
 gem 'httparty', :require => 'httparty', :group => :development 
 
 group :development, :test do
   gem 'quiet_assets'
-  gem 'rspec-rails'
   gem 'debugger'
   gem 'pry-rails'
 end

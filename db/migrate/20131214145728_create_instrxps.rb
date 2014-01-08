@@ -1,6 +1,6 @@
-class CreateIuassociations < ActiveRecord::Migration
+class CreateInstrxps < ActiveRecord::Migration
   def change
-    create_table :iuassociations do |t|
+    create_table :instrxps do |t|
       t.belongs_to :user, index: true
       t.belongs_to :instrument, index: true
 

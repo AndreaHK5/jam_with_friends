@@ -28,21 +28,15 @@ class SearchController < ApplicationController
       end
 
       @users = []
-      @locations = Location.near(@location_search, @radius_search)
-      @instruments.each do |i|
-        @generes.each do |g|
-          @user_matching = User.search_by_genere(g.id).search_by_instrument(i.id)
-          @locations.each do |l|
-            if @user_matching.to_a.include?(l.user)
-              @users << l.user
-            end
-          end
-        end
-      end
-
-      @users.compact!
-      @users = @users.uniq
-      @users.delete(current_user)
+      options = {
+        location: @location_search,
+        user: current_user,
+        instruments: @instruments,
+        generes: @generes,
+        radius: @radius_serach
+      }
+      @users = UserLocator.call(options)
+      
       @users = @users.paginate(:page => params[:page], :per_page => 10)
       prepare_hash_for_map
       @instruments_current = @instruments.collect {|i| i.id}
