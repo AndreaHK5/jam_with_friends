@@ -37,7 +37,7 @@ class SearchController < ApplicationController
       }
       @users = UserLocator.call(options)
       
-      @users = @users.paginate(:page => params[:page], :per_page => 10)
+      @users = @users.paginate(:page => params[:page], :per_page => 6)
       prepare_hash_for_map
       @instruments_current = @instruments.collect {|i| i.id}
       @generes_current = @generes.collect {|g| g.id}

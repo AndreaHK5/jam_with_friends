@@ -22,12 +22,6 @@
   text-shadow: 0 0 0.2em #000, 0 0 0.2em #000;
 }
 
-
-.list-group-item {
-  margin-top: 5px;
-  border-radius: 8px;
-}
-
 .profile-image {
   display: block;
   float: left;
@@ -104,5 +98,21 @@
 
 .chosen-container {
   display: block;
+  text-shadow: 0 0 0em #000, 0 0 0em #000;
+}
+
+.list-group {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.list-group-item {
+  margin-top: 5px;
+  border-radius: 8px;
+  height: 100px;
+  width: 250px; 
+  display: inline-table;
+  margin-right: 20px;
+  margin-bottom:25px;
 }
 

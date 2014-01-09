@@ -14,12 +14,6 @@
           <div class= "basic-info-content">
             <%= user.instrxps.collect {|i| "#{i.instrument.name} (#{i.since})"}.join(", ") %>
           </div>
-        </div>
-
-        <div class="basic-info-bottom">
-          <div class="basic-info-bottom-content">
-            Home location: <%= user.location.address %>
-          </div>
           <div class="basic-info-bottom-content">
           Contact: 
             <% if user_signed_in?  %>

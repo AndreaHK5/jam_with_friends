@@ -54,13 +54,14 @@
   </script>
     <ul class="list-group">
       <div id="users">
-
        <%= render @users %>
       </div>
-    </ul>
+    </li>
+    <br />
+    <%= will_paginate @users %>
   </div>
 </div>
-<%= will_paginate @users %>
+
 
 
 
