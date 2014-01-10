@@ -35,8 +35,16 @@ ActiveRecord::Schema.define(version: 20140103195309) do
     t.datetime "updated_at"
   end
 
-# Could not dump table "instrxps" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "instrxps", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "instrument_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "since"
+  end
+
+  add_index "instrxps", ["instrument_id"], name: "index_instrxps_on_instrument_id"
+  add_index "instrxps", ["user_id"], name: "index_instrxps_on_user_id"
 
   create_table "locations", force: true do |t|
     t.string   "address"

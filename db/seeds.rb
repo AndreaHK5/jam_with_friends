@@ -22,7 +22,7 @@ puts "finished seeding generes"
 puts "seeding locations"
 # generate random locations?
 puts "making fake users"
-(100).times do |u|
+(50).times do |u|
   user = User.create name: "User#{u+1}", email: "#{u+1}@gmail.com", password: "Andrea1234"
   user.location = Location.new(address: "#{rand(400)}, #{rand(50)}street, #{["manhattan","brooklyn","queens"].sample}, new york")
     instruments =*(1..8)
@@ -37,7 +37,9 @@ puts "making fake users"
     rand(1..3).times do |g|
       user.generes << Genere.where(id: generes.delete_at(rand(generes.length)))
     end
-    user.photo = Rails.root.joint("app","assets","images","userpic",+rand(1..12).to_s+".jpg")
+    # user.photo = Rails.root.joint("app","assets","images","userpic",+rand(1..12).to_s+".jpg")
+    user.photo = File.open(Rails.root.join("app","assets","images","userpic"+rand(1..12).to_s+".jpg"))
+
     user.save
 end
 puts "done with users"
