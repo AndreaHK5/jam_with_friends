@@ -65,10 +65,10 @@
 </div>
 <script>
  $(".bg").backstretch([
-      "/app/assets/bg1.jpg",
-      "/app/assets/bg2.jpg",
-      "/app/assets/bg4.jpg",
-      "/app/assets/bg4.jpg"
+      "<%= asset_path 'bg1.jpg' %>",
+      "<%= asset_path 'bg2.jpg' %>",
+      "<%= asset_path 'bg3.jpg' %>",
+      "<%= asset_path 'bg4.jpg' %>"
   ], {duration: 6000, fade: 750});
  </script>
 </body>
