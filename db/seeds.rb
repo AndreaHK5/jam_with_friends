@@ -38,7 +38,7 @@ puts "making fake users"
       user.generes << Genere.where(id: generes.delete_at(rand(generes.length)))
     end
     # user.photo = Rails.root.joint("app","assets","images","userpic",+rand(1..12).to_s+".jpg")
-    user.photo = File.open(Rails.root.join("app","assets","images","userpic"+rand(1..12).to_s+".jpg"))
+    user.photo = File.open(Rails.root.join(asset_path ("userpic"+rand(1..12).to_s+".jpg"))
 
     user.save
 end
