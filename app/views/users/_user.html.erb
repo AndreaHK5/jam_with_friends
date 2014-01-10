@@ -8,12 +8,12 @@
           <div class= "basic-info-content basic-info-name">
             <%= link_to user.name, profile_path(user) %>
           </div>
-          <div class= "basic-info-content">
+          <div class= "basic-info-content basic-info-bottom">
             <%= user.generes.first.name %> <%= user.generes.count > 1 ? "and more ..." : ""  %>
           </div>
-          <div class= "basic-info-content">
+          <div class= "basic-info-content basic-info-bottom">
             <% i = user.instrxps.order(since: :asc).first %>
-            <%= i.instrument.name %><%=" (#{2014-i.since} yrs)"%><%= user.instruments.count > 1 ? " and more..." : ""  %>
+            <%= i.instrument.name %><%=" (#{2014-i.since} yrs)"%><%= user.instruments.count > 1 ? " +" : ""  %>
           </div>
           <div class="basic-info-bottom-content">
           Contact: 
