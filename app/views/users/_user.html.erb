@@ -9,10 +9,11 @@
             <%= link_to user.name, profile_path(user) %>
           </div>
           <div class= "basic-info-content">
-            <%= user.generes.collect {|g| g.name}.join(", ") %>
+            <%= user.generes.first.name %> <%= user.generes.count > 1 ? "and more ..." : ""  %>
           </div>
           <div class= "basic-info-content">
-            <%= user.instrxps.collect {|i| "#{i.instrument.name} (#{i.since})"}.join(", ") %>
+            <% i = user.instrxps.order(since: :asc).first %>
+            <%= i.instrument.name %><%=" (#{2014-i.since} yrs)"%><%= user.instruments.count > 1 ? " and more..." : ""  %>
           </div>
           <div class="basic-info-bottom-content">
           Contact: 

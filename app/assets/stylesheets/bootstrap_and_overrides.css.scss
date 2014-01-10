@@ -1,3 +1,4 @@
+$text-color: #FCFFFC;
 @import 'bootstrap';
 
 ::-webkit-scrollbar { 
@@ -11,7 +12,6 @@
 
 .bg 
 {
-background-image: url('bg3.jpg');
 display:block;
 position: absolute;
 z-index: 1;
@@ -33,7 +33,6 @@ background-attachment: fixed;
 
 
 }
-
 
 .nav.nav-center {
     margin:0;
@@ -85,6 +84,7 @@ background-attachment: fixed;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  color: #000;
 }
 
 .navtop {

@@ -19,11 +19,15 @@
       <p >Advanced search</p>
         <div class="form-component-l">
          <%= label_tag :search, "Instrument" %>
-         <%= collection_select(:search, :instrument_id, Instrument.all, :id, :name, {include_hidden: false, :selected => @instruments_current} , {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Instrument(s)"}) %>
+          <div class="dropdown">
+           <%= collection_select(:search, :instrument_id, Instrument.all, :id, :name, {include_hidden: false, :selected => @instruments_current} , {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Instrument(s)"}) %>
+          </div>
         </div>
         <div class="form-component-l">
-         <%= label_tag :search, "Genere", class: "chzn-label" %>
-         <%= collection_select(:search, :genere_id, Genere.all, :id, :name,{include_hidden: false, :selected => @generes_current }, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)"}) %>    
+         <%= label_tag :search, "Genere" %>
+         <div class="dropdown">
+          <%= collection_select(:search, :genere_id, Genere.all, :id, :name,{include_hidden: false, :selected => @generes_current }, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)"}) %>
+         </div>
         </div>
         <div class="form-component-l">
          <%= label_tag "Location" %>

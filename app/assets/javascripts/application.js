@@ -17,4 +17,5 @@
 //= require underscore
 //= require gmaps/google
 //= require chosen-jquery
+//= require jquery.backstretch.min
 //= require_tree .
