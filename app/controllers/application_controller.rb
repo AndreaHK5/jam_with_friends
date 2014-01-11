@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
         response.first.city
       end
     else
-      request.location
+      request.location.city
     end
   end
 

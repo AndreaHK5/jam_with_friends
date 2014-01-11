@@ -8,6 +8,9 @@ class HomeController < ApplicationController
       end
     else
       @location_search = current_location
+      if current_location == ""
+        @location_search = current_location
+      end
     end
     @locations = Location.near(@location_search)
     @users = @locations.each.collect {|l| l.user}
