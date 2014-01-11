@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   has_many :instrxps
   has_many :instruments, through: :instrxps
   has_many :guassociations
-  has_many :generes, through: :guassociations
+  has_many :genres, through: :guassociations
   has_one :location
-  accepts_nested_attributes_for :instruments, :generes
+  accepts_nested_attributes_for :instruments, :genres
   validates :email, uniqueness: true
   validates :name, uniqueness: true
   accepts_nested_attributes_for :instrxps
@@ -17,16 +17,16 @@ class User < ActiveRecord::Base
   has_attached_file :photo
 
 # first version WORS, without string sanitation!
-  # scope :search_by_genere, ->(genere) { joins(:generes).where('generes.id' => genere)}
+  # scope :search_by_genre, ->(genre) { joins(:genres).where('genres.id' => genre)}
   # scope :search_by_instrument, ->(instrument) { joins(:instruments).where('instruments.id' => instrument)}
   # scope :search_by_location, ->(location) { joins(:location).where('locations.id' => location)}
 
 #second version - WORKS! - with string sanitization
-  # def self.search_by_genere(query)
-  #   joins(:generes).where('generes.id LIKE :query', :query  => "%#{query}%")
+  # def self.search_by_genre(query)
+  #   joins(:genres).where('genres.id LIKE :query', :query  => "%#{query}%")
   # end
-  # def self.search_by_genere(query)
-  #   joins(:generes).where('generes.id' => genere)
+  # def self.search_by_genre(query)
+  #   joins(:genres).where('genres.id' => genre)
   # end
 
   # def self.search_by_instrument(query)
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   # end
 
 # third version - all rolled together
-  # scope :search_by_genere, ->(query) { joins(:generes).where('generes.id LIKE :query', :query => "#{query}")}
-  scope :search_by_genere, ->(query)     { includes(:generes).where({ generes: { id: query}})}
+  # scope :search_by_genre, ->(query) { joins(:genres).where('genres.id LIKE :query', :query => "#{query}")}
+  scope :search_by_genre, ->(query)     { includes(:genres).where({ genres: { id: query}})}
   scope :search_by_instrument, ->(query) { includes(:instruments).where({ instruments: { id: query}})}
 end

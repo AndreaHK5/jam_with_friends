@@ -2,7 +2,14 @@
 
 VERSION 1 stories
 
-1.	As a GUEST I should be able to see on a map signed in users and the instruments they play on a map view	.2.	As a Guest I should be able to register in a single page my basic details (name, email, password). DONE3.	As a registered user I shoudl be able to then complete my registration with all my information. DONE4.	As a GUEST I shoudl be able to filter the results on the screen according to instruments, generes and distance. DONE5.	As a newly registered user I shoudl be able to go back o the search that I had and send a message to the musician that I have found6.	As a registered user I should be able to contact the musicians that I see on the map.7.	As a registered user I shoudl be able to do a line search for an instrument in a certain area in a certain area.8.	add the years experience to the user module.
+1.	As a GUEST I should be able to see on a map signed in users and the instruments they play on a map view	.
+2.	As a Guest I should be able to register in a single page my basic details (name, email, password). DONE
+3.	As a registered user I shoudl be able to then complete my registration with all my information. DONE
+4.	As a GUEST I shoudl be able to filter the results on the screen according to instruments, genres and distance. DONE
+5.	As a newly registered user I shoudl be able to go back o the search that I had and send a message to the musician that I have found
+6.	As a registered user I should be able to contact the musicians that I see on the map.
+7.	As a registered user I shoudl be able to do a line search for an instrument in a certain area in a certain area.
+8.	add the years experience to the user module.
 
 
 

@@ -2,10 +2,10 @@
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
 <div class="page-header">
-  <% if @instruments_current.empty? && @generes_current.empty? %>
+  <% if @instruments_current.empty? && @genres_current.empty? %>
     <div class="intro">Welcome to <strong>Jam With Friend</strong>, <br> possibly the easiest way to find <strong>great musicians near you</strong>! </div>
   <% else %>
-    <div class="intro">Found <%= "#{@users.count}" %> (awesome) users </strong> for <strong class="call-out"><%= @generes.collect {|g| g.name}.join(", ")%></strong>
+    <div class="intro">Found <%= "#{@users.count}" %> (awesome) users </strong> for <strong class="call-out"><%= @genres.collect {|g| g.name}.join(", ")%></strong>
       playing 
       <strong class="call-out"><%= @instruments.collect {|i| i.name}.join(", ")%></strong>
     </div>
@@ -24,9 +24,9 @@
           </div>
         </div>
         <div class="form-component-l">
-         <%= label_tag :search, "Genere" %>
+         <%= label_tag :search, "Genre" %>
          <div class="dropdown">
-          <%= collection_select(:search, :genere_id, Genere.all, :id, :name,{include_hidden: false, :selected => @generes_current }, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genere(s)"}) %>
+          <%= collection_select(:search, :genre_id, Genre.all, :id, :name,{include_hidden: false, :selected => @genres_current }, {multiple: true, :class => "chzn-search", "data-placeholder" => "Select Genre(s)"}) %>
          </div>
         </div>
         <div class="form-component-l">

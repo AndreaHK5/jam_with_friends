@@ -4,7 +4,7 @@ class ProfileController < ApplicationController
 
   def new
     @instruments = Instrument.all
-    @generes = Genere.all
+    @genres = Genre.all
     @user = current_user
     @user.location = Location.new
   end
@@ -21,7 +21,7 @@ class ProfileController < ApplicationController
 
   def edit
     @instruments = Instrument.all
-    @generes = Genere.all
+    @genres = Genre.all
     if @user.location == nil
       @user.location = Location.first
     end
@@ -42,14 +42,14 @@ class ProfileController < ApplicationController
       end
     end
 
-    if @safe_params[:generes_id] == nil
-      current_user.generes = []
-      flash[:notice] = flash[:notice].to_s + " \n no generes =("
+    if @safe_params[:genres_id] == nil
+      current_user.genres = []
+      flash[:notice] = flash[:notice].to_s + " \n no genres =("
     else
-      @ids = @safe_params[:generes_id]
-      current_user.generes = []
-      @ids.each do |genere_id|
-       current_user.generes << Genere.search_by_id(genere_id)
+      @ids = @safe_params[:genres_id]
+      current_user.genres = []
+      @ids.each do |genre_id|
+       current_user.genres << Genre.search_by_id(genre_id)
       end
     end
 
@@ -81,7 +81,7 @@ class ProfileController < ApplicationController
   private
 
     def safe_params
-     @safe_params = params.require(:user).permit(:location, :radius, :photo, instrxps: [:instrument_id,:since], :generes_id =>[])
+     @safe_params = params.require(:user).permit(:location, :radius, :photo, instrxps: [:instrument_id,:since], :genres_id =>[])
    end
 
   def check_user

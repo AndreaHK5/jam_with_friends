@@ -11,13 +11,13 @@
   <% end %> 
 <% end %>
 
-<h3> Generes </h3>
-<% if current_user.generes.empty? %>
-  <p>No generes yet....</p>
- <%= link_to "add generes to become searcheable!", edit_profile_path(current_user)  %> 
+<h3> Genres </h3>
+<% if current_user.genres.empty? %>
+  <p>No genres yet....</p>
+ <%= link_to "add genres to become searcheable!", edit_profile_path(current_user)  %> 
 <% else %>
-  <% current_user.generes.each do |generes| %>
-  <p><%= generes.name %></p>
+  <% current_user.genres.each do |genres| %>
+  <p><%= genres.name %></p>
   <% end %>
 <% end %>
 

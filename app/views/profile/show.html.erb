@@ -9,13 +9,13 @@
  <p>No insturments yet...</p>
 <% end %>
 
-<h3> Generes </h3>
-<% if @user.generes != nil %>
-  <% @user.generes.each do |generes| %>
-    <p><%= generes.name %></p>
+<h3> Genres </h3>
+<% if @user.genres != nil %>
+  <% @user.genres.each do |genres| %>
+    <p><%= genres.name %></p>
   <% end %>
 <% else %>
-  <p>No generes yet....</p>
+  <p>No genres yet....</p>
 <% end %>
 
 <h3> Location </h3>

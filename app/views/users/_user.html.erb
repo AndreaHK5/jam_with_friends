@@ -9,7 +9,7 @@
             <%= link_to user.name, profile_path(user) %>
           </div>
           <div class= "basic-info-content basic-info-bottom">
-            <%= user.generes.first.name %> <%= user.generes.count > 1 ? "and more ..." : ""  %>
+            <%= user.genres.first.name %> <%= user.genres.count > 1 ? "and more ..." : ""  %>
           </div>
           <div class= "basic-info-content basic-info-bottom">
             <% i = user.instrxps.order(since: :asc).first %>

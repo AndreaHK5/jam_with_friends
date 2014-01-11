@@ -1,7 +1,7 @@
 class Guassociation < ActiveRecord::Base
   belongs_to :user
-  belongs_to :genere
+  belongs_to :genre
 
-  validates :genere_id, :uniqueness => {:scope=>:user_id}
+  validates :genre_id, :uniqueness => {:scope=>:user_id}
 
 end

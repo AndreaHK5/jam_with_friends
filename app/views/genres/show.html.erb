@@ -1,0 +1,5 @@
+<h1><%= @genre.name %></h1>
+<p><%= link_to "edit the genre", edit_genre_path %>
+<p><%= link_to "delete this genre", genre_path, confirm: "are you sure",  method: :delete %></p>
+<%= link_to "Back to all genres", genres_path %>
+<%= link_to "Back home", root_path %>

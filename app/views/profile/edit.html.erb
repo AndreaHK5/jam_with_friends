@@ -13,11 +13,11 @@
     <p>
     <%= link_to "Can't find your instrument? Add a new Insturment to our database", new_instrument_path %>
     </p>
-    <h2> Generes </h2>
+    <h2> Genres </h2>
     <p>
-         <%= f.collection_select(:generes_id, Genere.all, :id, :name,{include_hidden: false, :selected => @current_user.genere_ids}, {multiple: true, :class => "chzn-search-profile", "data-placeholder" => "Select Genere(s)", :selected => @current_user.genere_ids}) %>
+         <%= f.collection_select(:genres_id, Genre.all, :id, :name,{include_hidden: false, :selected => @current_user.genre_ids}, {multiple: true, :class => "chzn-search-profile", "data-placeholder" => "Select Genre(s)", :selected => @current_user.genre_ids}) %>
 
-    <br><%= link_to "Can't find your genere? Add a new Genere to our database", new_genere_path %>
+    <br><%= link_to "Can't find your genre? Add a new Genre to our database", new_genre_path %>
     </p>
     <h2> Location </h2>
     <%= f.label :location %>

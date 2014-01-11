@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140103195309) do
 
-  create_table "generes", force: true do |t|
+  create_table "genres", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 20140103195309) do
 
   create_table "guassociations", force: true do |t|
     t.integer  "user_id"
-    t.integer  "genere_id"
+    t.integer  "genre_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "guassociations", ["genere_id"], name: "index_guassociations_on_genere_id"
+  add_index "guassociations", ["genre_id"], name: "index_guassociations_on_genre_id"
   add_index "guassociations", ["user_id"], name: "index_guassociations_on_user_id"
 
   create_table "instruments", force: true do |t|

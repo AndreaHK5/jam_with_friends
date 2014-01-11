@@ -15,10 +15,10 @@ class HomeController < ApplicationController
     @users = @users.paginate(:page => params[:page], :per_page => 6)
     prepare_hash_for_map
     @instruments_current = []
-    @generes_current = []
+    @genres_current = []
     # @users =[User.first]
     # @instruments = [Instrument.first]
-    # @generes = [Genere.first]
+    # @genres = [Genre.first]
     # @location_search = "20 crooke ave 11226 ny"
 
   end

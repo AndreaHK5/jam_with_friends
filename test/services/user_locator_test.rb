@@ -6,7 +6,7 @@ class UserLocatorTest < ActiveSupport::TestCase
       location: :location,
       user: :user,
       instruments: :instruments,
-      generes: :generes,
+      genres: :genres,
       radius: :radius
     }
 
@@ -14,22 +14,22 @@ class UserLocatorTest < ActiveSupport::TestCase
     assert_equal :location, user_location.location
     assert_equal :user, user_location.user
     assert_equal :instruments, user_location.instruments
-    assert_equal :generes, user_location.generes
+    assert_equal :genres, user_location.genres
     assert_equal :radius, user_location.radius
   end
 
   test "finds local users" do
   i1 = Instrument.create name: "Bass"
   i2 = Instrument.create name: "Guitar"
-  g1 = Genere.create name: "Rock"
-  g2 = Genere.create name: "Pop"
+  g1 = Genre.create name: "Rock"
+  g2 = Genre.create name: "Pop"
   l1 = Location.new(address: "20 crooke avenue, 11226, new york")
   u1 = User.create name: "andrea", email:"1@gmail.com", password: "Andrea1234"
   u1.location = l1
-  u1.generes << g1
+  u1.genres << g1
   
   u2 = User.create name: "andrea", email:"1@gmail.com", password: "Andrea1234"
-  u2.generes << g1
+  u2.genres << g1
   
 
   location_search = "10 crooke avenue 11226, new york"
@@ -38,7 +38,7 @@ class UserLocatorTest < ActiveSupport::TestCase
       radius: 20,
       user: u1,
       instruments: [i1,i2],
-      generes: [g1,g2]
+      genres: [g1,g2]
       }
 
 

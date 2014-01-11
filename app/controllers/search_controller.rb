@@ -4,17 +4,17 @@ class SearchController < ApplicationController
       redrect_to root_path
     else
       safe_params
-      # this shoudl not happen here, i shoudl search, if the search is empty BUT @instruments or @generes are there do not re initialise
+      # this shoudl not happen here, i shoudl search, if the search is empty BUT @instruments or @genres are there do not re initialise
 
       @instruments = []
-      @generes = []
+      @genres = []
       
       if @safe_params[:find] != nil
         update_with_free_search
       end
       
       instruments_sought
-      generes_sought
+      genres_sought
       
       location_sought 
       radius_sought
@@ -23,8 +23,8 @@ class SearchController < ApplicationController
         @instruments = Instrument.all
       end
       
-      if @generes.empty?
-        @generes = Genere.all
+      if @genres.empty?
+        @genres = Genre.all
       end
 
       @users = []
@@ -32,7 +32,7 @@ class SearchController < ApplicationController
         location: @location_search,
         user: current_user,
         instruments: @instruments,
-        generes: @generes,
+        genres: @genres,
         radius: @radius_search
       }
       @users = UserLocator.call(options)
@@ -40,7 +40,7 @@ class SearchController < ApplicationController
       @users = @users.paginate(:page => params[:page], :per_page => 6)
       prepare_hash_for_map
       @instruments_current = @instruments.collect {|i| i.id}
-      @generes_current = @generes.collect {|g| g.id}
+      @genres_current = @genres.collect {|g| g.id}
       render 'home/index' 
     end
   end
@@ -48,7 +48,7 @@ class SearchController < ApplicationController
   private
 
   def safe_params
-   @safe_params = params.require(:search).permit(:location, :radius, :find, :instrument_id => [], :genere_id =>[])
+   @safe_params = params.require(:search).permit(:location, :radius, :find, :instrument_id => [], :genre_id =>[])
   end
 
   def instruments_sought
@@ -69,19 +69,19 @@ class SearchController < ApplicationController
     end
   end
 
-  def generes_sought
-    if @safe_params["genere_id"] == nil
-      if @generes.empty?
-      @generes = Genere.all
+  def genres_sought
+    if @safe_params["genre_id"] == nil
+      if @genres.empty?
+      @genres = Genre.all
     end
     else
-      if @safe_params["genere_id"].include?("all")
-        @generes = Genere.all
+      if @safe_params["genre_id"].include?("all")
+        @genres = Genre.all
       else
-        @ids = @safe_params["genere_id"]
-        @generes = []
-        @ids.each do |genere_id|
-          @generes << Genere.search_by_id(genere_id).first
+        @ids = @safe_params["genre_id"]
+        @genres = []
+        @ids.each do |genre_id|
+          @genres << Genre.search_by_id(genre_id).first
         end
       end
     end
@@ -95,13 +95,13 @@ class SearchController < ApplicationController
       @instruments << instrument.first
       end
       @instruments.uniq
-      genere = Genere.search_by_name(find)
-      if !genere.empty?
-      @generes << genere.first
+      genre = Genre.search_by_name(find)
+      if !genre.empty?
+      @genres << genre.first
       end
-      @generes.uniq
-      # would be cool to search as well if the search params has alreay inside the insuments and generes, in order to prevent calling uniq
-      # also, would be cool to skip the generes search in case the instrument search is positive (something is either an instrument or a genere)
+      @genres.uniq
+      # would be cool to search as well if the search params has alreay inside the insuments and genres, in order to prevent calling uniq
+      # also, would be cool to skip the genres search in case the instrument search is positive (something is either an instrument or a genre)
       end
     end 
   end

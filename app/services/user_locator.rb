@@ -1,10 +1,10 @@
 class UserLocator
-  attr_reader :location, :radius, :user, :instruments, :generes
+  attr_reader :location, :radius, :user, :instruments, :genres
   def initialize(options={})
     @location = options[:location]
     @user = options[:user]
     @instruments = options[:instruments]
-    @generes = options[:generes]
+    @genres = options[:genres]
     @radius = options[:radius]
   end
 
@@ -19,17 +19,17 @@ class UserLocator
     #     end
 
     # @instruments.each do |i|
-    #   @generes.each do |g|
-    #     @user_matching = User.search_by_genere(g.id).search_by_instrument(i.id)
+    #   @genres.each do |g|
+    #     @user_matching = User.search_by_genre(g.id).search_by_instrument(i.id)
         
     #   end
     # end
-    users = User.search_by_genere(@generes).search_by_instrument(@instruments).distinct & @users_in_location
+    users = User.search_by_genre(@genres).search_by_instrument(@instruments).distinct & @users_in_location
     # users.compact!
     # users = users.uniq
 
 # improved version all in one with steven
-        # users = User.search_by_genere(@generes).
+        # users = User.search_by_genre(@genres).
         #           search_by_instrument(@instruments).
         #           distinct.
         #           where.not(id: @users_in_location)
