@@ -19,7 +19,7 @@ class SearchController < ApplicationController
       radius_sought
 
       if @instruments.empty?
-        # @instruments = Instrument.all
+        @instruments = Instrument.all
       end
       
       if @genres.empty?
@@ -54,7 +54,7 @@ class SearchController < ApplicationController
 
     if @safe_params["instrument_id"] == nil
       if @instruments.empty?
-        # @instruments = Instrument.all
+        @instruments = Instrument.all
       end
     else
       if @safe_params["instrument_id"].include?("all")
