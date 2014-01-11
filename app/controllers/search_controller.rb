@@ -15,6 +15,8 @@ class SearchController < ApplicationController
       instruments_sought
       genres_sought
       
+      binding.pry
+
       location_sought 
       radius_sought
 
@@ -51,11 +53,6 @@ class SearchController < ApplicationController
   end
 
   def instruments_sought
-    Rails.logger.warn "toby"
-    Rails.logger.warn @safe_params.inspect
-    Rails.logger.warn params
-    Rails.logger.warn @safe_params["instrument_id"]
-    Rails.logger.warn @instruments.empty?
 
     if @safe_params["instrument_id"] == nil
       if @instruments.empty?
