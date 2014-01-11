@@ -14,8 +14,6 @@ class SearchController < ApplicationController
       
       instruments_sought
       genres_sought
-      
-      binding.pry
 
       location_sought 
       radius_sought
