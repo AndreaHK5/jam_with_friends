@@ -51,10 +51,11 @@ class SearchController < ApplicationController
   end
 
   def instruments_sought
-    log.warn @safe_params.inspect
-    log.warn params
-    log.warn @safe_params["instrument_id"]
-    
+    Rails.logger.warn "toby"
+    Rails.logger.warn @safe_params.inspect
+    Rails.logger.warn params
+    Rails.logger.warn @safe_params["instrument_id"]
+    Rails.logger.warn @instruments.empty?
 
     if @safe_params["instrument_id"] == nil
       if @instruments.empty?
