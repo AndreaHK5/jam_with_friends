@@ -19,7 +19,7 @@ class SearchController < ApplicationController
       radius_sought
 
       if @instruments.empty?
-        @instruments = Instrument.all
+        # @instruments = Instrument.all
       end
       
       if @genres.empty?
