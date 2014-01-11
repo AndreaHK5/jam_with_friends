@@ -2,8 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
-jQuery ->
+ready = ->
   $('.chzn-search').chosen()
 
   if $('.pagination').length
@@ -13,3 +12,6 @@ jQuery ->
         $('.pagination').text("Getting more awesome musicians, Hold The Line!")
         $.getScript(url)
     $(window).scroll()
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
