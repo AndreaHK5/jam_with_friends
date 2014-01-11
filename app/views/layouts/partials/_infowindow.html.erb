@@ -1,8 +1,24 @@
-<p>Name: <%= user.name %></p>
-<p>Instruments: <%= user.instruments.collect {|i| i.name} %></p>
-<p>Generes: <%= user.generes.collect {|g| g.name} %></p>
-<% if user_signed_in? %>
-<p>Email contact: <%= user.email %></p>
-<% else %>
-<p>Sing in to contact me!</p>
-<% end %>
+
+  <div class="profile-image">
+   <%= link_to(image_tag(user.photo.url, class: "profile-image-inner"), profile_path(user)) %>
+  </div>
+  <div class="basic-info-top">
+     <div class= "basic-info-content basic-info-name">
+       <%= link_to user.name, profile_path(user) %>
+     </div>
+     <div class= "basic-info-content basic-info-bottom">
+       <%= user.generes.first.name %> <%= user.generes.count > 1 ? "and more ..." : ""  %>
+     </div>
+     <div class= "basic-info-content basic-info-bottom">
+       <% i = user.instrxps.order(since: :asc).first %>
+       <%= i.instrument.name %><%=" (#{2014-i.since} yrs)"%><%= user.instruments.count > 1 ? " +" : ""  %>
+     </div>
+     <div class="basic-info-bottom-content">
+     Contact: 
+       <% if user_signed_in?  %>
+         <%= user.email %>
+       <% else %>
+         <%= link_to content_tag(:span, "contact"), new_user_registration_path %>
+       <% end %>
+     </div>  
+   </div>
