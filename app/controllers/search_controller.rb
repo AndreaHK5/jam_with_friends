@@ -51,6 +51,11 @@ class SearchController < ApplicationController
   end
 
   def instruments_sought
+    log.warn @safe_params.inspect
+    log.warn params
+    log.warn @safe_params["instrument_id"]
+    
+
     if @safe_params["instrument_id"] == nil
       if @instruments.empty?
         @instruments = Instrument.all
