@@ -81,7 +81,7 @@ class SearchController < ApplicationController
         @ids = @safe_params["genre_id"]
         @genres = []
         @ids.each do |genre_id|
-          @genres << Genre.find_by_id(instrument_id.to_i)
+          @genres << Genre.find_by_id(genre_id.to_i)
         end
       end
     end
