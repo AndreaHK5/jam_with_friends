@@ -49,7 +49,7 @@ class ProfileController < ApplicationController
       @ids = @safe_params[:genres_id]
       current_user.genres = []
       @ids.each do |genre_id|
-       current_user.genres << Genre.search_by_id(genre_id)
+       current_user.genres << Genre.find_by_id(genre_id.to_i)
       end
     end
 
