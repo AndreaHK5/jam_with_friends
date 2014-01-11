@@ -5,6 +5,8 @@ class SearchController < ApplicationController
     else
       safe_params
       # this shoudl not happen here, i shoudl search, if the search is empty BUT @instruments or @genres are there do not re initialise
+      binding.pry
+      
 
       @instruments = []
       @genres = []
