@@ -63,7 +63,7 @@ class SearchController < ApplicationController
         @ids = @safe_params["instrument_id"]
         @instruments = []
         @ids.each do |instrument_id|
-          @instruments << Instrument.search_by_id(instrument_id).first
+          @instruments << Instrument.find_by_id(instrument_id.to_i)
         end
       end
     end
@@ -81,7 +81,7 @@ class SearchController < ApplicationController
         @ids = @safe_params["genre_id"]
         @genres = []
         @ids.each do |genre_id|
-          @genres << Genre.search_by_id(genre_id).first
+          @genres << Genre.find_by_id(instrument_id.to_i)
         end
       end
     end
