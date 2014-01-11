@@ -39,7 +39,7 @@ puts "making fake users"
     end
     # user.photo = Rails.root.joint("app","assets","images","userpic"+rand(1..12).to_s+".jpg")
     # user.photo = File.open(Rails.root.join(asset_path ("userpic"+rand(1..12).to_s+".jpg"))
-      user.photo = File.open("#{Rails.root}/app/assets/images/userpic"+rand(1..12).to_s+".jpg")
+      user.photo = File.open("#{Rails.root}/app/assets/images/userpic"+rand(1..4).to_s+".jpg")
 
     user.save
 end
