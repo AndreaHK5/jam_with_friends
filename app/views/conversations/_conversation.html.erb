@@ -2,15 +2,15 @@
 
   <div class="content_left">
     <div class="avatar">
-      <%= link_to image_tag(conversation.last_sender.logo.url(:small),
+      <%= link_to image_tag(conversation.last_sender.photo.url(:small),
                             :title => conversation.last_sender.name,
                             :alt => conversation.last_sender.name),
-                  conversation.last_sender.subject %>
+                  conversation.subject %>
     </div>
 
     <header>
       <h5>
-        <%= link_to truncate_name(conversation.last_sender.name), conversation.last_sender.subject %>
+        <%= link_to conversation.last_sender.name, conversation.subject %>
       </h5>
       <div class="date">
         <%= t('time.ago', :time => time_ago_in_words(conversation.updated_at)) %>

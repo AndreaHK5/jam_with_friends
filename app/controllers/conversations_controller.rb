@@ -5,11 +5,11 @@ class ConversationsController < ApplicationController
 
   def index
     if @box.eql? "inbox"
-      @conversations = @mailbox.inbox.page(params[:page])
+      @conversations = @mailbox.inbox
     elsif @box.eql? "sentbox"
-      @conversations = @mailbox.sentbox.page(params[:page])
+      @conversations = @mailbox.sentbox
     else
-      @conversations = @mailbox.trash.page(params[:page])
+      @conversations = @mailbox.trash
     end
 
     respond_to do |format|
