@@ -1,0 +1,11 @@
+<% content_for :title do %>
+  <%=t('message.other')%>
+<% end %>
+
+<section id="new_message">
+
+  <%= render partial: 'toolbar/messages' %>
+
+  <%= render :partial => 'new' %>
+
+</section>

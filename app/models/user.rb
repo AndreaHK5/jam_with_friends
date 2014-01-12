@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo
 
+  acts_as_messageable
+
 # first version WORS, without string sanitation!
   # scope :search_by_genre, ->(genre) { joins(:genres).where('genres.id' => genre)}
   # scope :search_by_instrument, ->(instrument) { joins(:instruments).where('instruments.id' => instrument)}
