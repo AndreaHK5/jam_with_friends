@@ -25,5 +25,10 @@
 <% else %>
 <p>no location yet...</p>
 <% end %>
+<% if user_signed_in? %>
+  <%= @user.email %>
+<% else %>
+ <%= link_to content_tag(:span, "contact"), new_user_registration_path %>
+<% end %>
 
 

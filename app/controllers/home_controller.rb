@@ -1,17 +1,19 @@
 class HomeController < ApplicationController
   def index
-    if user_signed_in?
-      if current_user.location == nil
-        @location_search = current_location
-      else
-        @location_search = current_user.location.address
-      end
-    else
       @location_search = current_location
-      if current_location == ""
-        @location_search = current_location
-      end
-    end
+    # if user_signed_in?
+    #   @location_search = current_location
+    #   if current_user.location == nil
+    #     @location_search = current_location
+    #   else
+    #     @location_search = current_user.location.address
+    #   end
+    # else
+    #   @location_search = current_location
+    #   if current_location == ""
+    #     @location_search = current_location
+    #   end
+    # end
     @locations = Location.near(@location_search)
     @users = @locations.each.collect {|l| l.user}
     @users.delete(current_user)

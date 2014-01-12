@@ -15,7 +15,7 @@ class GenresController < ApplicationController
     @genre = Genre.create safe_genre
     if @genre.save
       flash[:notice] = "new Genre added!!!"
-      redirect_to @genre
+      redirect_to edit_profile_path(current_user)
     else
       flash[:notice] = "something went wrong with adding #{safe_genre[:name]}"
       @genre.save

@@ -3,3 +3,4 @@
 <p><%= link_to "delete this instrument", instrument_path, confirm: "are you sure",  method: :delete %></p>
 <%= link_to "Back to all instruments", instruments_path %>
 <%= link_to "Back home", root_path %>
+<%= link_to "back to profile", show_profile_path(current_user) %>
