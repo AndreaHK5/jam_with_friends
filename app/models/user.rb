@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  acts_as_messageable
   has_many :instrxps
   has_many :instruments, through: :instrxps
   has_many :guassociations
@@ -15,6 +16,23 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :instruments
 
   has_attached_file :photo
+
+
+
+  def mail_email(object)
+    email
+  end
+
+
+
+  def mailboxer_email(object)
+  #Check if an email should be sent for that object
+  #if true
+  return :email
+  #if false
+  # return nil
+end
+
 
 # first version WORS, without string sanitation!
   # scope :search_by_genre, ->(genre) { joins(:genres).where('genres.id' => genre)}
