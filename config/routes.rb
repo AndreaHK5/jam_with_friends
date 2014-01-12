@@ -6,4 +6,7 @@ JamWithFriends::Application.routes.draw do
   resources :genres
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :profile, only: [:show, :edit, :update]
+
+  resources :messages
+  resources :conversations
 end
