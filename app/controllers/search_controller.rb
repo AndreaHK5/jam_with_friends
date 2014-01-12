@@ -35,9 +35,8 @@ class SearchController < ApplicationController
         radius: @radius_search
       }
       @users = UserLocator.call(options)
-      
+      prepare_hash_for_map      
       @users = @users.paginate(:page => params[:page], :per_page => 6)
-      prepare_hash_for_map
       @instruments_current = @instruments.collect {|i| i.id}
       @genres_current = @genres.collect {|g| g.id}
       render 'home/index' 
