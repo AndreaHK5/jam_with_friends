@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-    before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_filter :get_mailbox, :get_box
   before_filter :check_current_subject_in_conversation, :only => [:show, :update, :destroy]
 
@@ -11,7 +11,6 @@ class ConversationsController < ApplicationController
     else
       @conversations = @mailbox.trash
     end
-
     respond_to do |format|
       format.html { render @conversations if request.xhr? }
     end
@@ -23,7 +22,7 @@ class ConversationsController < ApplicationController
     else
       @receipts = @mailbox.receipts_for(@conversation).not_trash
     end
-    render :action => :show
+    render 'show'
     @receipts.mark_as_read
   end
 
@@ -84,9 +83,8 @@ class ConversationsController < ApplicationController
   end
 
   def check_current_subject_in_conversation
-    @conversation = Conversation.find_by_id(params[:id])
-
-    if @conversation.nil? or !@conversation.is_participant?(@actor)
+    @conversation = Conversation.find_by_id(params[:id].to_i)
+    if @conversation.nil? or !@conversation.is_participant?(current_user)
       redirect_to conversations_path(:box => @box)
     return
     end
