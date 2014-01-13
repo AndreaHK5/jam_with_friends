@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.xml
   def new
     if params[:receiver].present?
-      @recipient = User.find_by_id(params[:receiver])
+      @recipient = User.find_by_id(params[:receiver].to_i)
       return if @recipient.nil?
       @recipient = nil if @recipient == current_user
     end
