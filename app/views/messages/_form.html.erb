@@ -17,7 +17,7 @@
     <div class="recipients-box">
       <%= label_tag :recipients %>
       <span class="recipients">
-        <%= collection_select :_recipients, :user,  User.all, :id, :name, {include_hidden: false}, {multiple: true, :class => "chzn-recipients", "data-placeholder" => "Recipients"} %>
+        <%= collection_select :_recipients, :user,  User.all, :id, :name, {include_hidden: false, :selected => @recipient.id}, {multiple: true, :class => "chzn-recipients", "data-placeholder" => "Recipients"} %>
       </span>
     </div>
     <div class="subject-box">
@@ -37,5 +37,4 @@
   </div>
 
   <%= submit_tag :send, :name => :send_message, :class => "btn pull-left" %>
-
 <% end %>

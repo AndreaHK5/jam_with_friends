@@ -3,7 +3,7 @@
 
 <div class="page-header">
   <% if @instruments_current.empty? && @genres_current.empty? %>
-    <div class="intro">Welcome to <strong>Jam With Friend</strong>, <br> possibly the easiest way to find <strong>great musicians near you</strong>! </div>
+    <div class="intro">Welcome to <strong>Jam With Friends</strong>, <br> possibly the easiest way to find <strong>great musicians near you</strong>! </div>
   <% else %>
     <div class="intro">Found <%= "#{@users.count}" %> (awesome) users </strong> for <strong class="call-out"><%= @genres.collect {|g| g.name}.join(", ")%></strong>
       playing 

@@ -13,12 +13,12 @@
           </div>
           <div class= "basic-info-content basic-info-bottom">
             <% i = user.instrxps.order(since: :asc).first %>
-            <%= i.instrument.name %><%=" (#{2014-i.since} yrs)"%><%= user.instruments.count > 1 ? " +" : ""  %>
+            <%= i.instrument.name %><%=" (#{2014-i.since}yrs)"%><%= user.instruments.count > 1 ? " +others" : ""  %>
           </div>
           <div class="basic-info-bottom-content">
             <div class="contact">            
              <% if user_signed_in?  %>
-                <%= user.email %>
+                <%= link_to :contact, new_message_path(:receiver => "#{user.id}") %>
               <% else %>
                <%= link_to content_tag(:span, "contact"), new_user_registration_path %>
               <% end %>

@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     if @message = Message.find_by_id(params[:id]) and @conversation = @message.conversation
-      if @conversation.is_participant?(@actor)
+      if @conversation.is_participant?(@user)
         redirect_to conversation_path(@conversation, :box => @box, :anchor => "message_" + @message.id.to_s)
       return
       end
@@ -24,9 +24,9 @@ class MessagesController < ApplicationController
   # GET /messages/new.xml
   def new
     if params[:receiver].present?
-      @recipient = Actor.find_by_slug(params[:receiver])
+      @recipient = User.find_by_id(params[:receiver])
       return if @recipient.nil?
-      @recipient = nil if Actor.normalize(@recipient)==Actor.normalize(current_subject)
+      @recipient = nil if @recipient == current_user
     end
   end
 
