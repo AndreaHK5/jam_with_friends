@@ -28,12 +28,12 @@ class ConversationsController < ApplicationController
 
   def update
     if params[:untrash].present?
-    @conversation.untrash(@actor)
+    @conversation.untrash(current_user)
     end
 
-    if params[:reply_all].present?
+    if params[:commit] == "reply_all"
       last_receipt = @mailbox.receipts_for(@conversation).last
-      @receipt = @actor.reply_to_all(last_receipt, params[:body])
+      @receipt = current_user.reply_to_all(last_receipt, params[:body])
     end
 
     if @box.eql? 'trash'
