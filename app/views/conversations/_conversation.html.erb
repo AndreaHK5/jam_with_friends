@@ -1,6 +1,10 @@
-<div>
-From <%= conversation.last_sender.name  %>
-Subject <%= conversation.subject %>
-<%= link_to "read me", conversation_path(conversation) %>
-<%= link_to "read me2", conversation_path(conversation.id) %>
+<div class="mesasge-preview">
+  <div class="sender-message">
+    <%= link_to conversation.last_sender.name, conversation_path(conversation, class: "sender") %> 
+  </div>
+  <div class="subject-message">
+    <%= link_to conversation.subject, conversation_path(conversation), class: "subject"  %>
+  </div>
 </div>
+
+

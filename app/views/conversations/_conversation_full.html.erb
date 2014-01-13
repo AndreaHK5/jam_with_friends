@@ -1,13 +1,13 @@
-<h3>
+<div class="subject-jumbo">
   <%= conversation.subject %>
-</h3>
-
-<div class="action">
-  <% unless @box.eql?'trash' %>
-    <%= link_to :delete, conversation_path(conversation, :location => 'conversation', :box => @box),
-           :confirm => "delete message?", :method => :delete, :remote => true %>
-  <% end %>
+    <div class="delete-conversation">
+      <% unless @box.eql?'trash' %>
+      <%= link_to :delete, conversation_path(conversation, :location => 'conversation', :box => @box),
+             :confirm => "delete message?", :method => :delete, :remote => true %>
+      <% end %>
+  </div>
 </div>
+
 
 <h4>
   <%= t("message.participants") %>:

@@ -1,22 +1,22 @@
 
     <ul class="nav">
     <li>
-      <%= link_to new_message_path do %>
-        <%= '>' if controller.action_name == 'new' %> New Message
+      <%= link_to new_message_path, class: "boxes" do %>
+        <%= '>' if controller.action_name == 'new' %> Compose
       <% end %>
     </li>
     <li>
-      <%= link_to conversations_path(box: :inbox) do %>
+      <%= link_to conversations_path(box: :inbox), class: "boxes"  do %>
         <%= '>' if params[:box] == 'inbox' %> Inbox
       <% end %>
     </li>
     <li>
-      <%= link_to conversations_path(box: :sentbox) do %>
+      <%= link_to conversations_path(box: :sentbox), class: "boxes" do %>
         <%= '>' if params[:box] == 'sentbox' %>Sent
       <% end %>
     </li>
     <li>
-      <%= link_to conversations_path(box: :trash) do %>
+      <%= link_to conversations_path(box: :trash), class: "boxes" do %>
         <%= '>' if params[:box] == 'trash' %>Trash
       <% end %>
     </li>

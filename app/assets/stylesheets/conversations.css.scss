@@ -8,3 +8,56 @@
   display: block;
 }
 
+.page-header{
+  height: 50px;
+}
+
+
+.navigation-conversations {
+  font-weight: bold;
+  border-right: 1px solid rgb(204, 204, 200);
+}
+
+.boxes {
+  font-size: 18px;
+  color: #FCFFFC;
+}
+
+.sender-message {
+  padding-left: 10px;
+  font-size: 18px;
+  text-shadow: 0 0 0.2em #000, 0 0 0.2em #000;
+  font-weight: bold;
+}
+
+.sender {
+  color: #FCFFFC;
+}
+
+.subject {
+  color: #FCFFFC;
+  padding-left: 18px;
+}
+
+.mesasge-preview {
+  height: 60px;
+  color: #FCFFFC;
+  background: rgba(204, 204, 200, 0.4);
+  margin-bottom: 5px;
+  margin-top: 3px;
+  border-radius: 5px; 
+}
+
+.subject-jumbo {
+  height: 60px;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.delete-conversation {
+display: inline;
+float: right;
+font-size: 16px;
+vertical-align: top;
+
+}
