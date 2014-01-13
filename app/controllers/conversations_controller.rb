@@ -48,7 +48,7 @@ class ConversationsController < ApplicationController
 
   def destroy
 
-    @conversation.move_to_trash(@actor)
+    @conversation.move_to_trash(current_user)
 
     respond_to do |format|
       format.html {

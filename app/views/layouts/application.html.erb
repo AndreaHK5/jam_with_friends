@@ -20,7 +20,10 @@
        <% if user_signed_in? %>
         <div class="nav pull-right">
          <%= link_to "#{current_user.name}", profile_path(current_user) , class: "navtop sign-up topbar"%>
-         <%= link_to "log out", destroy_user_session_path, method: :delete, class: "navtop topbar" %>
+         <div class="navtop">
+           <%= link_to raw('<i class="glyphicon glyphicon-comment"></i>'), conversations_path %>
+           <%= link_to "log out", destroy_user_session_path, method: :delete, class: "topbar" %>
+          </div>
         </div>
        <% else %>
            <div class="nav pull-right">
