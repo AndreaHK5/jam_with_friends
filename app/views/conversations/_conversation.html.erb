@@ -1,6 +1,12 @@
 <div class="mesasge-preview">
   <div class="sender-message">
-    <%= link_to conversation.last_sender.name, conversation_path(conversation, class: "sender") %> 
+    <%= link_to conversation.last_sender.name, conversation_path(conversation, class: "sender") %>
+        <div class="delete-conversation">
+      <% unless @box.eql?'trash' %>
+      <%= link_to :trash, conversation_path(conversation, :location => 'conversation', :box => @box),
+             :confirm => "delete message?", :method => :delete, :remote => true %>
+      <% end %>
+  </div> 
   </div>
   <div class="subject-message">
     <%= link_to conversation.subject, conversation_path(conversation), class: "subject"  %>
