@@ -2,10 +2,14 @@
   <%=t('message.other')%>
 <% end %>
 
-<section id="new_message">
 
-  <%= render partial: 'toolbar/messages' %>
-
-  <%= render :partial => 'new' %>
-
-</section>
+<div class="page-header">
+</div>
+<div class="row ">
+  <div class="col-md-2 navigation-conversations"> 
+    <%= render partial: 'toolbar/messages' %>
+  </div>
+  <div class="col-md-10">
+      <%= render :partial => 'new' %>
+  </div>
+</div>

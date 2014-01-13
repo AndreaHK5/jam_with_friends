@@ -1,7 +1,3 @@
-<h2 class="colorfont">
-  <%= t('mailbox.message.new') %>
-</h2>
-
 <%= form_tag messages_path, :method => :post , :class => "new_message" do %>
   <% if @receipt and @receipt.errors.any? %>
     <div class="error">
@@ -17,17 +13,21 @@
       </ul>
     </div>
   <% end %>
-  <div>
-  <%= label_tag :recipients %>
-  <span class="recipients">
-     <%= collection_select :_recipients, :user,  User.all, :id, :name, {include_hidden: false}, {multiple: true, :class => "chzn-recipients", "data-placeholder" => "Recipients"} %>
-  </span>
+  <div class="new-message-basics">
+    <div class="recipients-box">
+      <%= label_tag :recipients %>
+      <span class="recipients">
+        <%= collection_select :_recipients, :user,  User.all, :id, :name, {include_hidden: false}, {multiple: true, :class => "chzn-recipients", "data-placeholder" => "Recipients"} %>
+      </span>
+    </div>
+    <div class="subject-box">
+      <%= label_tag :subject %>
+      <span>
+        <%= text_field_tag :subject,nil %>
+      </span>
+    </div>
   </div>
-  <div>
-    <%= label_tag :subject %>
 
-   <%= text_field_tag :subject,nil %>
-  </div>
   <div>
     <%= label_tag :body %>
 
@@ -36,6 +36,6 @@
       </div>
   </div>
 
-  <%= submit_tag :send, :name => :send_message, :class => "btn pull-right" %>
+  <%= submit_tag :send, :name => :send_message, :class => "btn pull-left" %>
 
 <% end %>
