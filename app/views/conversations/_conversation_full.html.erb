@@ -14,7 +14,7 @@
 </h4>
 <div class="participants">
   <% conversation.recipients.each do |recp| %>
-    <%= link_to image_tag(recp.photo.url(:small), :title=>recp.name, :alt => recp.name), recp.name %>
+    <%= link_to "#{recp.name}", profile_path(recp) %>
   <% end %>
 </div>
 <hr class="soften">
@@ -45,7 +45,7 @@
     <%= text_area_tag :body, nil,:rows =>6, :cols=> 53, :class => "required form_tag" %>
   </div>
   <div class="actions">
-    <%= submit_tag t('mailboxer.reply'), :name => :reply_all,:class => "btn" %>
+    <%= submit_tag :reply_all %>
   </div>
   <% end %>
   <%end %>

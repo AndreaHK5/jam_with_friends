@@ -1,21 +1,8 @@
 <%= div_for(message, :class => (message.is_unread?(@actor) ? 'unread' : '')) do %>
   <div class="media">
     <div class="pull-left">
-      <%= link_to image_tag(message.sender.photo.url(:small),
-                            :title => message.sender.name,
-                            :alt => message.sender.name),
-                   message.subject %>
-
-    </div>
-
-    <div class="media-heading name">
-      <div class="name">
-      <%= link_to message.sender.name, message.subject %>
-      </div>
-      <div class="date">
-        <%= t('time.ago', :time => time_ago_in_words(message.updated_at)) %>
-      </div>
-    </div>
+      <%= link_to "#{message.sender.name}", profile_path(message.sender) %>
+    </div> said:
 
   <div class="media-body">        
     <div class="word-break pre-message">
