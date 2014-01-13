@@ -1,13 +1,7 @@
-<%= div_for(message, :class => (message.is_unread?(@actor) ? 'unread' : '')) do %>
-  <div class="media">
-    <div class="pull-left">
-      <%= link_to "#{message.sender.name}", profile_path(message.sender) %>
-    </div> said:
-
-  <div class="media-body">        
-    <div class="word-break pre-message">
-      <%= raw(message.body) %>
-    </div>
+<div class="message">
+  
+  <%= link_to "#{message.sender.name}", profile_path(message.sender), :class => "participants"  %>, <%= time_ago_in_words(message.updated_at)%> <span class="normal">ago:</span>
+  <div class="body">
+    <%= raw(message.body) %>
   </div>
 </div>
-<% end %>

@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :get_mailbox, :get_box
   before_filter :check_current_subject_in_conversation, :only => [:show, :update, :destroy]
+  include ActionView::Helpers::DateHelper
 
   def index
     if @box.eql? "inbox"

@@ -2,19 +2,15 @@
   <%= conversation.subject %>
     <div class="delete-conversation">
       <% unless @box.eql?'trash' %>
-      <%= link_to :delete, conversation_path(conversation, :location => 'conversation', :box => @box),
+      <%= link_to :trash, conversation_path(conversation, :location => 'conversation', :box => @box),
              :confirm => "delete message?", :method => :delete, :remote => true %>
       <% end %>
   </div>
 </div>
 
-
-<h4>
-  <%= t("message.participants") %>:
-</h4>
-<div class="participants">
-  <% conversation.recipients.each do |recp| %>
-    <%= link_to "#{recp.name}", profile_path(recp) %>
+<div class="participants"> 
+  Participants:<% conversation.recipients.each do |recp| %>
+    <%= link_to "#{recp.name}", profile_path(recp), class: "participants" %>
   <% end %>
 </div>
 <hr class="soften">

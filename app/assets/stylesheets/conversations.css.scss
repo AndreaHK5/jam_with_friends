@@ -55,9 +55,26 @@
 }
 
 .delete-conversation {
-display: inline;
-float: right;
-font-size: 16px;
-vertical-align: top;
+  display: inline;
+  float: right;
+  font-size: 16px;
+  vertical-align: top;
+  text-shadow: 0 0 0.1em #000, 0 0 0.1em #000;
+}
+
+.participants {
+  text-shadow: 0 0 0.1em #000, 0 0 0.1em #000;
+  font-size: 16px;
+}
+
+.message {
+  color: #FCFFFC;
+  background: rgba(204, 204, 200, 0.4);
+  margin-bottom: 5px;
+  margin-top: 3px;
+  border-radius: 5px;
+  text-shadow: 0 0 0.1em #000, 0 0 0.1em #000;
+  padding: 10px; 
 
 }
+
