@@ -25,10 +25,10 @@
 <% else %>
 <p>no location yet...</p>
 <% end %>
-<% if user_signed_in? %>
-  <%= @user.email %>
-<% else %>
- <%= link_to content_tag(:span, "contact"), new_user_registration_path %>
-<% end %>
+<% if user_signed_in?  %>
+   <%= link_to :contact, new_message_path(:receiver => "#{user.id}") %>
+ <% else %>
+  <%= link_to content_tag(:span, "contact"), new_user_registration_path %>
+ <% end %>
 
 

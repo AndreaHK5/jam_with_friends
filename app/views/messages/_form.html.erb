@@ -17,13 +17,15 @@
     <div class="recipients-box">
       <%= label_tag :recipients %>
       <span class="recipients">
-        <%= collection_select :_recipients, :user,  User.all, :id, :name, {include_hidden: false, :selected => @recipient.id}, {multiple: true, :class => "chzn-recipients", "data-placeholder" => "Recipients"} %>
+        <div class="recipient-select">
+        <%= collection_select :_recipients, :user,  User.all, :id, :name, {include_hidden: false, :selected => @recipient.try(:id)}, {multiple: true, :class => "chzn-recipients", "data-placeholder" => "Recipients"} %>
+      </div>
       </span>
     </div>
     <div class="subject-box">
       <%= label_tag :subject %>
       <span>
-        <%= text_field_tag :subject,nil %>
+        <%= text_field_tag :subject,nil, :class => "subject-box" %>
       </span>
     </div>
   </div>
