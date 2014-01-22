@@ -7,7 +7,7 @@
  <%= link_to "add instruments to become searcheable!", edit_profile_path(current_user)  %>
 <% else %>
   <% current_user.instrxps.each do |xp| %>
-    <p><%= xp.instrument.name %>, played since <%= xp.since %></p>
+    <p><%= xp.instrument.name %>, played since <%= xp.since %> <%= image_tag xp.instrument.photo.url, class: "instrument-image" %></p>
   <% end %> 
 <% end %>
 

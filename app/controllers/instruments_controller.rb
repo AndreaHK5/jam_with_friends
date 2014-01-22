@@ -53,6 +53,6 @@ class InstrumentsController < ApplicationController
   private
 
   def safe_instrument
-    safe_instrument = params.require(:instrument).permit(:name)
+    safe_instrument = params.require(:instrument).permit(:name, :photo)
   end
 end

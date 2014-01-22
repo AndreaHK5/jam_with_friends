@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112220144) do
+ActiveRecord::Schema.define(version: 20140121234403) do
 
   create_table "conversations", force: true do |t|
     t.string   "subject",    default: ""
@@ -39,6 +39,10 @@ ActiveRecord::Schema.define(version: 20140112220144) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "instrxps", force: true do |t|

@@ -3,7 +3,7 @@
 <h3> Instruments </h3>
 <% if @user.instrxps != nil %>
   <% @user.instrxps.each do |instrxp| %>
-    <p><%= instrxp.instrument.name %> since <%= instrxp.since %></p>
+    <p><%= instrxp.instrument.name %> since <%= instrxp.since %><%= image_tag instrxp.instrument.photo.url, class: "instrument-image" %></p>
   <% end %>
 <% else %>
  <p>No insturments yet...</p>
