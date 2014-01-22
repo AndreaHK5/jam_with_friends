@@ -39,6 +39,11 @@ class ApplicationController < ActionController::Base
      marker.lat user.location.latitude
      marker.lng user.location.longitude
      marker.infowindow render_to_string(:partial => '/layouts/partials/infowindow', :locals => { :user => user})
+     marker.picture({
+        :url     => user.instrxps.first.instrument.photo.url,
+        :width   => 30,
+        :height  => 30,
+        })
    end
   end
 
@@ -56,5 +61,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     session[:previous_url] || root_path
   end
+
+  
 
 end
