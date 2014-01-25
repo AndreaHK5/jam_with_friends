@@ -1,6 +1,6 @@
 puts "seeding the instruments"
 i = Instrument.create name: "Bass"
-i.photo = File.open("#{Rails.root}/app/assets/images/bass.jpg")
+i.photo = File.open("#{Rails.root}/app/assets/images/bass.png")
 i = Instrument.create name: "Guitar"
 i.photo = File.open("#{Rails.root}/app/assets/images/guitar.png")
 i = Instrument.create name: "Voice"
@@ -8,9 +8,9 @@ i.photo = File.open("#{Rails.root}/app/assets/images/voice.png")
 i = Instrument.create name: "Keyboard"
 i.photo = File.open("#{Rails.root}/app/assets/images/keyboard.png")
 i = Instrument.create name: "Drums"
-i.photo = File.open("#{Rails.root}/app/assets/images/drums.jpg")
+i.photo = File.open("#{Rails.root}/app/assets/images/drums.png")
 i = Instrument.create name: "Sax"
-i.photo = File.open("#{Rails.root}/app/assets/images/sax.jpg")
+i.photo = File.open("#{Rails.root}/app/assets/images/sax.png")
 i = Instrument.create name: "Piano"
 i.photo = File.open("#{Rails.root}/app/assets/images/piano.jpeg")
 i = Instrument.create name: "Trombone"
@@ -45,8 +45,8 @@ puts "making fake users"
     rand(1..3).times do |g|
       user.genres << Genre.where(id: genres.delete_at(rand(genres.length)))
     end
-    # user.photo = Rails.root.joint("app","assets","images","userpic"+rand(1..12).to_s+".jpg")
-    # user.photo = File.open(Rails.root.join(asset_path ("userpic"+rand(1..12).to_s+".jpg"))
+    # user.photo = Rails.root.joint("app","assets","images","userpic"+rand(1..12).to_s+".png")
+    # user.photo = File.open(Rails.root.join(asset_path ("userpic"+rand(1..12).to_s+".png"))
     user.photo = File.open("#{Rails.root}/app/assets/images/userpic"+rand(1..12).to_s+".jpg")
 
     user.save
