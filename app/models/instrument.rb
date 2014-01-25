@@ -5,7 +5,7 @@ class Instrument < ActiveRecord::Base
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false, message: "instrument already existing" }
 
-  has_attached_file :photo
+  has_attached_file :photo, :styles => {:mapmarker => "50x50>"}
 
   scope :search_by_name, -> (query) {where('lower(name) LIKE :query', :query => "%#{query.downcase}%")}
 end

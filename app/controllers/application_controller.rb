@@ -39,10 +39,11 @@ class ApplicationController < ActionController::Base
      marker.lat user.location.latitude
      marker.lng user.location.longitude
      marker.infowindow render_to_string(:partial => '/layouts/partials/infowindow', :locals => { :user => user})
+     oldest_instrument = user.instrxps.order(since: :asc).first.instrument
      marker.picture({
-        :url     => user.instrxps.first.instrument.photo.url,
-        :width   => 30,
-        :height  => 30,
+        :url     => oldest_instrument.photo.url(:mapmarker),
+        :width   => 50,
+        :height  => 50,
         })
    end
   end

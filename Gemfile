@@ -15,6 +15,7 @@ gem 'rails', '4.0.2'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'paperclip', '~> 3.0'
+gem 'rmagick', '2.13.2'
 gem 'will_paginate', '~> 3.0'
 
 gem 'mailboxer'
