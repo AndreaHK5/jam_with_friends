@@ -35,16 +35,20 @@ class ApplicationController < ActionController::Base
   end
 
   def prepare_hash_for_map
-   @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-     marker.lat user.location.latitude
-     marker.lng user.location.longitude
-     marker.infowindow render_to_string(:partial => '/layouts/partials/infowindow', :locals => { :user => user})
-     oldest_instrument = user.instrxps.order(since: :asc).first.instrument
-     marker.picture({
-        :url     => oldest_instrument.photo.url(:mapmarker),
-        :width   => 50,
-        :height  => 50,
-        })
+    if @users.empty?
+      create_markers_for_no_results
+    else
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+       marker.lat user.location.latitude
+       marker.lng user.location.longitude
+       marker.infowindow render_to_string(:partial => '/layouts/partials/infowindow', :locals => { :user => user})
+       oldest_instrument = user.instrxps.order(since: :asc).first.instrument
+       marker.picture({
+          :url     => oldest_instrument.photo.url(:mapmarker),
+          :width   => 40,
+          :height  => 40,
+          })
+    end
    end
   end
 
@@ -63,6 +67,16 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
-  
 
+  def create_markers_for_no_results
+     @hash = Gmaps4rails.build_markers(@location_search) do |user, marker|
+      marker.lat Geocoder.coordinates(@location_search).first
+      marker.lng Geocoder.coordinates(@location_search).last
+      marker.picture({
+          :url     => "",
+          :width   => 0,
+          :height  => 0,
+          })
+    end
+  end
 end
