@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jam_id: 
+  user_id: 
+  instrument_id: 
+
+two:
+  jam_id: 
+  user_id: 
+  instrument_id: 

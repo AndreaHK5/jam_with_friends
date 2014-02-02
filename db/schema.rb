@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121234403) do
+ActiveRecord::Schema.define(version: 20140202202215) do
+
+  create_table "candidates", force: true do |t|
+    t.integer  "jam_id"
+    t.integer  "user_id"
+    t.integer  "instrument_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "candidates", ["instrument_id"], name: "index_candidates_on_instrument_id"
+  add_index "candidates", ["jam_id"], name: "index_candidates_on_jam_id"
+  add_index "candidates", ["user_id"], name: "index_candidates_on_user_id"
 
   create_table "conversations", force: true do |t|
     t.string   "subject",    default: ""
@@ -55,6 +67,29 @@ ActiveRecord::Schema.define(version: 20140121234403) do
 
   add_index "instrxps", ["instrument_id"], name: "index_instrxps_on_instrument_id"
   add_index "instrxps", ["user_id"], name: "index_instrxps_on_user_id"
+
+  create_table "invites", force: true do |t|
+    t.integer  "jam_id"
+    t.integer  "user_id"
+    t.integer  "instrument_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invites", ["instrument_id"], name: "index_invites_on_instrument_id"
+  add_index "invites", ["jam_id"], name: "index_invites_on_jam_id"
+  add_index "invites", ["user_id"], name: "index_invites_on_user_id"
+
+  create_table "jams", force: true do |t|
+    t.integer  "location_id"
+    t.integer  "user_id"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "jams", ["location_id"], name: "index_jams_on_location_id"
+  add_index "jams", ["user_id"], name: "index_jams_on_user_id"
 
   create_table "locations", force: true do |t|
     t.string   "address"

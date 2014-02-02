@@ -16,7 +16,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :instruments
 
   has_attached_file :photo
-  
+
+  has_many :candidates
+  has_many :candidate_instruments, through: :candidates, :source => :instrument
+  has_many :candidate_jams, through: :candidates, :source => :jam
+
+  has_many :invites
+  has_many :invited_instruments, through: :invites, :source => :instrument
+  has_many :invited_jams, through: :invites, :source => :jam  
 
 
 

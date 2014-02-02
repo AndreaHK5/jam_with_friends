@@ -8,4 +8,5 @@ JamWithFriends::Application.routes.draw do
   resources :profile, only: [:show, :edit, :update]
   resources :messages
   resources :conversations
+  resources :jams
 end

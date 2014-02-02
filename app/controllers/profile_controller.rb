@@ -25,7 +25,7 @@ class ProfileController < ApplicationController
     if @user.location == nil
       @user.location = Location.first
     end
-    3.times {current_user.instrxps.build } 
+    3.times {current_user.instrxps.build} 
   end
 
   def update
