@@ -30,6 +30,13 @@ class JamsController < ApplicationController
     basic_jam
   end
 
+  def destroy
+    find_jam
+    @jam.destroy
+    flash[:notice] = "jam deleted"
+    redirect_to root_path
+  end
+
 private
 
   def find_jam
