@@ -1,0 +1,11 @@
+<h1>JamManagement <%= @jam.id %></h1>
+<%= @jam.date %><br>
+<%= @jam.location.address %><br>
+<ul>
+  <% @jam_participants.each do |i, us| %>
+    <li><%= i %> 
+      candidates:
+      <%= us[:candidates].collect {|u| u.name} if !us[:candidates].nil? %> invited: 
+      <%= us[:invites].collect {|u| u.name} if !us[:invites].nil? %></li>
+  <% end %>
+</ul>

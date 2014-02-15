@@ -1,0 +1,2 @@
+module JamManagementsHelper
+end
