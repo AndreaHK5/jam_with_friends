@@ -1,0 +1,12 @@
+<%= form_for @jam do |j|%>
+  <%= j.label :date %>
+  <%= j.text_field :date %>
+  <%= j.label :location %>
+  <%= j.text_field :location, value: @jam.location.address %>
+  <%= j.label :instruments %>
+  <div class="instrument_choice">
+    <%= j.collection_select :candidate_instruments, Instrument.all, :id, :name, {:include_blank => true, :selected => @jam.candidate_instruments.collect {|i| i.id}},{ multiple: true, :class => "chzn-search", "data-placeholder" => "Select Instrument(s)"}%>
+  </div>
+  <br>
+  <%= j.submit %>
+<% end %>

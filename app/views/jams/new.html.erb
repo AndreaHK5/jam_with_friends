@@ -1,23 +1,6 @@
 <h1>New Jam!</h1>
 <p>Fiagata!!!</p>
-<%= form_for @jam do |j|%>
-  <%= j.label :date %>
-  <%= j.text_field :date %>
-  <%= j.label :location %>
-  <%= j.text_field :location %>
-  <br>
-  <% @jam.candidates.each do |c| %>
-</br>
-    <%= j.fields_for "[candidate][]", Candidate.new, child_index: "NEW_ITEM" do |c| %>
-      <%= c.label :instrument %>
-      <div class="instrument_choice">
-     <%= c.select :instrument_id, Instrument.all.map {|i2| [i2.name,i2.id]}, {:include_blank => true},{ multiple: false, :class => "chzn-search", "data-placeholder" => "Select Instrument(s)"}%>
-     </div>
-    <% end %>
-  <% end %>
-</br>
-  <%= j.submit %>
-<% end %>
+<%= render 'jam_basics' %>
 
 
 

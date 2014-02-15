@@ -1,1 +1,12 @@
-<%= @jam.candidate_instruments.collect {|i| i.name} %>
+<h3>Jam!!!</h3>
+<p>When: <%= @jam.date %></p>
+<p>Where: <%= @jam.location.address %></p>
+<p>Instruments:</p>
+<ul>
+  <% @jam.candidate_instruments.each do |i| %>
+    <li><%= i.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to "add more instruments/ edit jam", edit_jam_path %>
+
