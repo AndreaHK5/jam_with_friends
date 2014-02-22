@@ -1,0 +1,25 @@
+<%= render :partial => 'jam_basics' %>
+Instrument: <%= @instrument.name %><br>
+<% if @invite.nil? %>
+  No one invited yet, select someone
+<% else %>
+  <%= @invite.user.name %> is invited to play <%= @instrument.name %>
+  <%= link_to "he is cool, keep him in!!!", jam_managements_show_path(:jam_id => @jam.id)%>
+<% end %> %>
+<p>Wanna change invited musician?</p>
+
+<p>the current candidates are:</p>
+<%= form_tag("update_invite", method: :get) do %>
+  <%= collection_select :users, :id, @candidates.collect {|c| c.user}, :id, :name, {}, {multiple: false, "data-placeholder" => "select who to invite!", :include_blank => true} %>
+  <%= hidden_field_tag :jam_id, @jam.id %>
+  <%= hidden_field_tag :instrument_id, @instrument.id %> 
+  <%= submit_tag "update jam!" %>
+<% end %>
+
+<p>All musicians available are:</p>
+<%= form_tag("update_invite", method: :get) do %>
+  <%= collection_select :users, :id, @instrument.users, :id, :name, {}, {multiple: false, "data-placeholder" => "select who to invite!", :include_blank => true} %>
+  <%= hidden_field_tag :jam_id, @jam.id %>
+  <%= hidden_field_tag :instrument_id, @instrument.id %> 
+  <%= submit_tag "update jam!" %>
+<% end %>

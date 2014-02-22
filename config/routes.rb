@@ -5,6 +5,10 @@ JamWithFriends::Application.routes.draw do
   get "search/index", to: 'search#index', as: "search"
   get "jam_managements/edit_candidates", to: 'jam_managements#edit_candidates', as: "edit_candidates"
   get "jam_managements/update_candidates", to: 'jam_managements#update_candidates', as: "update_candidates"
+  
+  get "jam_managements/edit_invite", to: 'jam_managements#edit_invite', as: "edit_invite"
+  get "jam_managements/update_invite", to: 'jam_managements#update_invite', as: "update_invite"
+
   resources :instruments
   resources :genres
   devise_for :users, :controllers => { :registrations => "registrations", :passwords => "passwords"  }

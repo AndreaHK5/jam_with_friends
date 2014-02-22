@@ -13,6 +13,8 @@
         invited: <%= us[:invites].collect {|u| u.name} %>
       <% else %>
         no invited player yet
-      <% end %></li>
+      <% end %>
+      <%= link_to "invite a uniqe musician", {:controller => "jam_managements", :action => "edit_invite", :jam_id => @jam.id, :instrument_name => i} , :method => :get %>
+    </li>
   <% end %>
 </ul>
