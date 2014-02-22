@@ -1,11 +1,18 @@
-<h1>JamManagement <%= @jam.id %></h1>
-<%= @jam.date %><br>
-<%= @jam.location.address %><br>
+<%= render :partial => 'jam_basics' %>
 <ul>
   <% @jam_participants.each do |i, us| %>
-    <li><%= i %> 
+    <li><%= i %> <br>
       candidates:
-      <%= us[:candidates].collect {|u| u.name} if !us[:candidates].nil? %> invited: 
-      <%= us[:invites].collect {|u| u.name} if !us[:invites].nil? %></li>
+      <% if us[:candidates].first.nil? %>
+        No candidates yet
+      <% else %>
+        <%= us[:candidates].collect {|u| u.name} %>      
+      <% end %>
+      <%= link_to "add/edit candidates", {:controller => "jam_managements", :action => "edit_candidates", :jam_id => @jam.id, :instrument_name => i} , :method => :get %>
+      <% if us[:invites] %>
+        invited: <%= us[:invites].collect {|u| u.name} %>
+      <% else %>
+        no invited player yet
+      <% end %></li>
   <% end %>
 </ul>

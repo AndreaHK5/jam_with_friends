@@ -1,0 +1,9 @@
+<%= render :partial => 'jam_basics' %>
+Add/remove candidates for <%= @instrument.name %>
+<%= form_tag("update_candidates", method: :get) do %>
+  <%= collection_select :users, :id, @instrument.users, :id, :name, {:selected => @candidates.collect {|candidate| candidate.user.id}}, {multiple: true, :class => "chzn-search", "data-placeholder" => "Candidates!", :include_blank => true} %>
+  <%= hidden_field_tag :jam_id, @jam.id %>
+  <%= hidden_field_tag :instrument_id, @instrument.id %> 
+  <%= submit_tag "update jam!" %>
+<% end %>
+
