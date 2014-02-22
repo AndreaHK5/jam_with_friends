@@ -63,6 +63,7 @@ private
   end
 
   def instruments_required
+    @jam.candidates.each {|candidate| candidate.delete}
     @safe_params[:candidate_instruments].uniq.each do |i_id|
         unless i_id.empty?
         instrument = Instrument.find(i_id.to_i)  
