@@ -1,8 +1,8 @@
 puts "seeding the instruments"
 i = Instrument.create name: "Bass"
-i.photo = File.open("#{Rails.root}/app/assets/images/bass.png")
+i.photo = File.open(File.join(Rails.root,'app','assets','images','bass.png'))
 i = Instrument.create name: "Guitar"
-i.photo = File.open("#{Rails.root}/app/assets/images/guitar.png")
+i.photo = File.open(File.join(Rails.root,'app','assets','images','guitar.png'))
 i = Instrument.create name: "Voice"
 i.photo = File.open("#{Rails.root}/app/assets/images/voice.png")
 i = Instrument.create name: "Keyboard"
@@ -12,9 +12,9 @@ i.photo = File.open("#{Rails.root}/app/assets/images/drums.png")
 i = Instrument.create name: "Sax"
 i.photo = File.open("#{Rails.root}/app/assets/images/sax.png")
 i = Instrument.create name: "Piano"
-i.photo = File.open("#{Rails.root}/app/assets/images/piano.jpeg")
+i.photo = File.open("#{Rails.root}/app/assets/images/piano.png")
 i = Instrument.create name: "Trombone"
-i.photo = File.open("#{Rails.root}/app/assets/images/trombone.jpeg")
+i.photo = File.open("#{Rails.root}/app/assets/images/trombone.png")
 puts "finished seeding the instruments"
 puts "seeding genres"
 Genre.create name: "Rock"

@@ -16,4 +16,8 @@ class Instrument < ActiveRecord::Base
   has_attached_file :photo, :styles => {:mapmarker => "40x40>"}
 
   scope :search_by_name, -> (query) {where('lower(name) LIKE :query', :query => "%#{query.downcase}%")}
+
+  def picture_from_url(url)
+    self.picture = open(url)
+  end
 end
