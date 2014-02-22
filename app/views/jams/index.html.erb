@@ -1,1 +1,7 @@
-<%= @jams %>
+<%= link_to "new jam?", new_jam_path %>
+<p>your jams:</p>
+<ul>
+  <% @jams.each do |jam| %>
+    <li><%= link_to jam.date, jam_path(jam) %></li>
+  <% end %>
+</ul>

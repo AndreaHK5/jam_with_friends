@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-      @location_search = current_location
+    @location_search = current_location
     # if user_signed_in?
     #   @location_search = current_location
     #   if current_user.location == nil
@@ -17,6 +17,7 @@ class HomeController < ApplicationController
     @locations = Location.near(@location_search)
     @users = @locations.each.collect {|l| l.user}
     @users.delete(current_user)
+    @users.compact!
     prepare_hash_for_map
     @users = @users.paginate(:page => params[:page], :per_page => 6)
     @instruments_current = []

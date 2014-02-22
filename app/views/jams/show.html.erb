@@ -3,7 +3,7 @@
 <p>Where: <%= @jam.location.address %></p>
 <p>Instruments:</p>
 <ul>
-  <% @jam.candidate_instruments.each do |i| %>
+  <% @jam.candidate_instruments.uniq.each do |i| %>
     <li><%= i.name %></li>
   <% end %>
 </ul>

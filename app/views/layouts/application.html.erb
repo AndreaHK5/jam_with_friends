@@ -21,6 +21,7 @@
         <div class="nav pull-right">
          <%= link_to "#{current_user.name}", profile_path(current_user) , class: "navtop sign-up topbar"%>
          <div class="navtop">
+          <%= link_to "jams", jams_path %>
           <% if current_user.mailbox.inbox({:read => false}).empty? %>
             <%= link_to raw('<i class="glyphicon glyphicon-envelope"></i>'), conversations_path, class: "topbar" %>
           <% else %>

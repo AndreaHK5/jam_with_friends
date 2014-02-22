@@ -1,8 +1,8 @@
 class JamsController < ApplicationController
-    before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :authenticate_user!, except: [:show]
 
   def index
-    @jams = Jam.all
+    @jams = Jam.where(user_id: current_user.id)
   end
 
   def new

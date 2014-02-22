@@ -1,4 +1,5 @@
 class JamManagementsController < ApplicationController
+  before_filter :authenticate_user!
   def show
     find_jam
     @jam_participants = {}
