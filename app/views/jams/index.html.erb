@@ -5,3 +5,22 @@
     <li><%= link_to jam.date, jam_path(jam) %></li>
   <% end %>
 </ul>
+<p>Jams you are candidated:</p>
+<ul>
+  <% @jams_candidate.each do |jam| %>
+    <li><%= link_to jam.date, jam_path(jam) %></li>
+  <% end %>
+</ul>
+<p>Jams you are invited:</p>
+<ul>
+  <% @jams_invited.each do |jam| %>
+    <li><%= link_to jam.date, jam_path(jam) %></li>
+  <% end %>
+</ul>
+
+<p>Jams you might be interested in:</p>
+<ul>
+  <% @jams_candidable.each do |jam| %>
+    <li><%= link_to jam.date, jam_path(jam) %></li>
+  <% end %>
+</ul>

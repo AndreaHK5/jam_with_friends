@@ -1,15 +1,8 @@
-<h3>Jam!!!</h3>
-<p>When: <%= @jam.date %></p>
-<p>Where: <%= @jam.location.address %></p>
-<p>Instruments:</p>
-<ul>
-  <% @jam.candidate_instruments.uniq.each do |i| %>
-    <li><%= i.name %></li>
-  <% end %>
-</ul>
+<%= render 'jam' %>
 
-<%= link_to "add more instruments/ edit jam", edit_jam_path %><br>
 
-<%= link_to "Invite awesome people to the jam", jam_managements_show_path(:jam_id => @jam.id)%>
+  <%= link_to "add more instruments/ edit jam", edit_jam_path %><br>
+  <%= link_to "Invite awesome people to the jam", jam_managements_show_path(:jam_id => @jam.id)%>
+
 
 

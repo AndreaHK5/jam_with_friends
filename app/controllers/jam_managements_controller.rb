@@ -63,6 +63,14 @@ class JamManagementsController < ApplicationController
     redirect_to :action => :show, :jam_id => @jam.id
   end
 
+  def candiate
+    binding.pry
+    find_jam
+    find_instrument
+    Candidate.create (user_id: current_user.id, jam_id: @jam, instrument_id: @instrument_id)
+    redirect_to jam_show_path(@jam)
+  end
+
   private
   
   def find_jam

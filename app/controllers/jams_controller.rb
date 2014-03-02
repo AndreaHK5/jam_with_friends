@@ -3,6 +3,9 @@ class JamsController < ApplicationController
 
   def index
     @jams = Jam.where(user_id: current_user.id)
+    @jams_candidate = Candidate.where(user_id: current_user.id).collect {|i| i.jam}
+    @jams_invited = Invite.where(user_id: current_user.id).collect {|i| i.jam}
+    find_candidable_jams
   end
 
   def new
@@ -18,6 +21,17 @@ class JamsController < ApplicationController
 
   def show
     find_jam
+    if @jam.user.id == current_user.id
+      render 'show'
+    elsif @jam.invited_users.include?(current_user)
+      @instrument = Invite.where(jam_id: @jam.id, user_id: current_user.id).first.instrument
+      render 'show_invited'
+    elsif @jam.candidate_users.include?(current_user)
+      @instrument = Candidate.where(jam_id: @jam.id, user_id: current_user.id).first.instrument
+      render 'show_candidate'
+    else
+      render 'show_cadidable'
+    end    
   end
 
   def edit
@@ -42,6 +56,17 @@ private
   def find_jam
     sea = params[:id].to_i
     @jam = Jam.find sea
+  end
+
+  def find_candidable_jams
+    @jams_candidable = []
+    current_user.instruments.each do |instrument|
+      Jam.search_by_instrument(instrument.id).each do |j|
+        unless already_in_the_jam(j,instrument)
+          @jams_candidable << j 
+        end
+      end
+    end
   end
   
   def safe_params
@@ -71,6 +96,14 @@ private
             @jam.candidate_instruments << instrument
           end
         end
+    end
+  end
+
+  def already_in_the_jam(jam,intrument)
+    if jam.candidate_users.include?(current_user) || jam.invited_users.include?(current_user) || jam.user.id == current_user.id
+      true
+    else
+      false
     end
   end
 
