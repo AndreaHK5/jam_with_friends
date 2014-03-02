@@ -63,12 +63,28 @@ class JamManagementsController < ApplicationController
     redirect_to :action => :show, :jam_id => @jam.id
   end
 
-  def candiate
-    binding.pry
+  def candidate
     find_jam
     find_instrument
-    Candidate.create (user_id: current_user.id, jam_id: @jam, instrument_id: @instrument_id)
-    redirect_to jam_show_path(@jam)
+    Candidate.create(user_id: current_user.id, jam_id: @jam.id, instrument_id: @instrument.id)   
+    redirect_to jam_path(@jam)
+  end
+
+  def withdraw_candidate
+    find_jam
+    find_instrument
+    c = Candidate.where(user_id: current_user.id, jam_id: @jam, instrument_id: @instrument.id).first
+    c.user = nil
+    c.save
+    redirect_to jam_path(@jam)
+  end
+
+  def refuse_invite
+    find_jam
+    find_instrument
+    binding.pry
+    Invite.where(user_id: current_user.id, jam_id: @jam, instrument_id: @instrument.id).first.destroy
+    redirect_to jam_path(@jam)
   end
 
   private
@@ -88,6 +104,7 @@ class JamManagementsController < ApplicationController
 
   def fill_candidates
     @candidates = Candidate.where(jam_id: @jam.id, instrument_id: @instrument.id)
+    @candidates = @candidates.reject {|c| c.user.nil?}
   end
 
 end

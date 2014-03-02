@@ -30,7 +30,8 @@ class JamsController < ApplicationController
       @instrument = Candidate.where(jam_id: @jam.id, user_id: current_user.id).first.instrument
       render 'show_candidate'
     else
-      render 'show_cadidable'
+      candidable_instruments
+      render 'show_candidable'
     end    
   end
 
@@ -62,7 +63,7 @@ private
     @jams_candidable = []
     current_user.instruments.each do |instrument|
       Jam.search_by_instrument(instrument.id).each do |j|
-        unless already_in_the_jam(j,instrument)
+        unless already_in_the_jam(j)
           @jams_candidable << j 
         end
       end
@@ -99,12 +100,16 @@ private
     end
   end
 
-  def already_in_the_jam(jam,intrument)
+  def already_in_the_jam(jam)
     if jam.candidate_users.include?(current_user) || jam.invited_users.include?(current_user) || jam.user.id == current_user.id
       true
     else
       false
     end
+  end
+
+  def candidable_instruments
+    @instruments = @jam.candidate_instruments.uniq & current_user.instruments
   end
 
 

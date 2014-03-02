@@ -1,2 +1,3 @@
 <%= render 'jam' %>
-you are invited to this jam as <%= @instrument.name %>, wanna pull that?
+<p>you are invited to this jam as <%= @instrument.name %>, wanna pull that?</p>
+<%= link_to "refuse invitation as #{@instrument.name} player",refuse_invitation_from_jam_path(:jam_id => @jam.id, :instrument_id => @instrument.id)  %>

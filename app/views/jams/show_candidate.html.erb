@@ -1,2 +1,3 @@
 <%= render 'jam' %>
-you are candidate to this jam as <%= @instrument.name %>, wanna pull that?
+<p>you are candidate to this jam as <%= @instrument.name %>, wanna pull you candidacy?</p>
+<%= link_to "pull candidacy as #{@instrument.name} player",withdraw_candidate_from_jam_path(:jam_id => @jam.id, :instrument_id => @instrument.id)  %>

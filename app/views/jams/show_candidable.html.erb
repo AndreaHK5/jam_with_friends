@@ -1,3 +1,5 @@
 <%= render 'jam' %>
 Do you want to candidate yourself to this jam?
-<%= link_to "candidate me!",  %>
+<% @instruments.each do |i| %>
+  <%= link_to "candidate me! as #{i.name}",candidate_to_jam_path(:jam_id => @jam.id, :instrument_id => i.id) %>
+<% end %>
